@@ -1,0 +1,53 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"О нас", 
+		"/company/about/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/company/news/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Наши партнеры", 
+		"/company/nashi-partnery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Выставки и мероприятия", 
+		"/company/vystavki-i-meropriyatiya/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Сертификаты", 
+		"/company/sertifikaty/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Реквизиты", 
+		"/company/rekvizity/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Отзывы", 
+		"/company/otzyvy/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

@@ -1,0 +1,4 @@
+<?
+$MESS["FORM_PLACEHOLDER"] = "Поиск";
+$MESS["ATUM_SMARTSEARCH_POISK"] = "Найти";
+?>
