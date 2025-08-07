@@ -65,30 +65,30 @@ else
 				<?
 				if ($showSlider)
 				{
-					foreach ($morePhoto as $key => $photo)
-					{
-						?>
-						<span class="product-item-image-slide item <?=($key == 0 ? 'active' : '')?>"
-							style="background-image: url('<?=$photo['SRC']?>');">
-						</span>
-						<?
-					}
-				}
-				?>
-			</span>
-			<span class="product-item-image-original" id="<?=$itemIds['PICT']?>"
-				style="background-image: url('<?=$item['PREVIEW_PICTURE']['SRC']?>'); <?=($showSlider ? 'display: none;' : '')?>">
-			</span>
-			<?
-			if ($item['SECOND_PICT'])
-			{
-				$bgImage = !empty($item['PREVIEW_PICTURE_SECOND']) ? $item['PREVIEW_PICTURE_SECOND']['SRC'] : $item['PREVIEW_PICTURE']['SRC'];
-				?>
-				<span class="product-item-image-alternative" id="<?=$itemIds['SECOND_PICT']?>"
-					style="background-image: url('<?=$bgImage?>'); <?=($showSlider ? 'display: none;' : '')?>">
-				</span>
-				<?
-			}
+                                foreach ($morePhoto as $key => $photo)
+                                {
+                                        ?>
+                                        <span class="product-item-image-slide item <?=($key == 0 ? 'active' : '')?>">
+                                                <img loading="lazy" src="<?=$photo['SRC']?>" alt="<?=$productTitle?>" style="width:100%;height:100%;object-fit:contain;" />
+                                        </span>
+                                        <?
+                                }
+                        }
+                        ?>
+                </span>
+                <span class="product-item-image-original" id="<?=$itemIds['PICT']?>" <?=($showSlider ? 'style="display: none;"' : '')?>>
+                        <img loading="lazy" src="<?=$item['PREVIEW_PICTURE']['SRC']?>" alt="<?=$imgTitle?>" style="width:100%;height:100%;object-fit:contain;" />
+                </span>
+                <?
+                if ($item['SECOND_PICT'])
+                {
+                        $bgImage = !empty($item['PREVIEW_PICTURE_SECOND']) ? $item['PREVIEW_PICTURE_SECOND']['SRC'] : $item['PREVIEW_PICTURE']['SRC'];
+                        ?>
+                        <span class="product-item-image-alternative" id="<?=$itemIds['SECOND_PICT']?>" <?=($showSlider ? 'style="display: none;"' : '')?>>
+                                <img loading="lazy" src="<?=$bgImage?>" alt="<?=$imgTitle?>" style="width:100%;height:100%;object-fit:contain;" />
+                        </span>
+                        <?
+                }
 
 			if ($arParams['SHOW_DISCOUNT_PERCENT'] === 'Y')
 			{
