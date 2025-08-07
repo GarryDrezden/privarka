@@ -9,14 +9,11 @@ use  \Bitrix\Main\Page\Asset;
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <? $APPLICATION->ShowHead(); ?>
         <title><?$APPLICATION->ShowTitle()?></title>
-        <? $APPLICATION->ShowPanel() ?>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous" defer></script>
+        <?// $APPLICATION->ShowPanel() ?>
+        <script src="/local/templates/privarka2023/js/jquery-3.7.1.min.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js" crossorigin="anonymous" defer></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript" defer></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-        <!-- <link href="<?//=SITE_TEMPLATE_PATH;?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <script src="<?//=SITE_TEMPLATE_PATH;?>/bootstrap/js/bootstrap.bundle.min.js"></script> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
         <link rel='stylesheet' href='/local/templates/privarka2023/styles.css'>
