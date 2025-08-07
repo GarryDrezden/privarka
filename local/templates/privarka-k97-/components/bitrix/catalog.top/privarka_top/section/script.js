@@ -39,36 +39,9 @@
 	window.JCCatalogTopComponent.prototype =
 	{
 		bigDataLoad: function()
-		{
-			var url = '/ajax/analytics_proxy.php',
-				data = BX.ajax.prepareData(this.bigData.params);
-
-			if (data)
-			{
-				url += (url.indexOf('?') !== -1 ? '&' : '?') + data;
-			}
-
-			var onReady = BX.delegate(function(result){
-				this.sendRequest({
-					action: 'deferredLoad',
-					bigData: 'Y',
-					items: result && result.items || [],
-					rid: result && result.id,
-					count: this.bigData.count,
-					rowsRange: this.bigData.rowsRange,
-					shownIds: this.bigData.shownIds
-				});
-			}, this);
-
-			BX.ajax({
-				method: 'GET',
-				dataType: 'json',
-				url: url,
-				timeout: 3,
-				onsuccess: onReady,
-				onfailure: onReady
-			});
-		},
+                {
+                        // Analytics proxy disabled
+                },
 
 		deferredLoad: function()
 		{
