@@ -267,8 +267,10 @@
             var modalBackCallCatalog = document.getElementById("ModalBackCallCatalog");
             var btn4 = document.getElementById("BackCallBtnCatalog");
             var button = document.getElementById("CloseBackCallCatalog");
-            btn4.onclick = function() {
-                modalBackCallCatalog.style.display = "block";
+            if (btn4) {
+                btn4.onclick = function() {
+                    modalBackCallCatalog.style.display = "block";
+                }
             }
             button.onclick = function() {
                 modalBackCallCatalog.style.display = "none";
@@ -302,8 +304,10 @@
             var modalBackCall = document.getElementById("ModalBackCall");
             var btn4 = document.getElementById("BackCallBtn");
             var button = document.getElementById("CloseBackCall");
-            btn4.onclick = function() {
-            modalBackCall.style.display = "block";
+            if (btn4) {
+                btn4.onclick = function() {
+                    modalBackCall.style.display = "block";
+                }
             }
             button.onclick = function() {
             modalBackCall.style.display = "none";
