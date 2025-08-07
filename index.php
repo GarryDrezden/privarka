@@ -13,7 +13,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
               <picture>
                 <source srcset="/local/templates/privarka2023/images/banner_img2.png" data-srcset="/local/templates/privarka2023/images/banner_img2.png" media="(min-width: 1280px)">
                 <source srcset="/local/templates/privarka2023/images/banner_img2.png" data-srcset="/local/templates/privarka2023/images/banner_img2.png" media="(min-width: 768px)">
-                <img class=" lazyloaded" src="/local/templates/privarka2023/images/banner_img.png" data-src="/local/templates/privarka2023/images/banner_img.png" alt="">
+                <img class=" lazyloaded" loading="lazy" src="/local/templates/privarka2023/images/banner_img.png" data-src="/local/templates/privarka2023/images/banner_img.png" alt="">
               </picture>
               </a>
             </div>
@@ -27,7 +27,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
 <div class="main_catalog_blocks content_wrapper">
   <div class="main_catalog_blocks_item">
     <a href="/krepezh/">
-      <img src="/local/templates/privarka2023/images/main_catalog_blocks1.png" title="" alt=""/>
+      <img loading="lazy" src="/local/templates/privarka2023/images/main_catalog_blocks1.png" title="" alt=""/>
     </a>
     <a href="/krepezh/" class="main_catalog_blocks_item_a">
       Крепеж
@@ -37,7 +37,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
   </div>
   <div class="main_catalog_blocks_item">
     <a href="/oborudovanie/">
-      <img src="/local/templates/privarka2023/images/main_catalog_blocks2.png" title="" alt=""/>
+      <img loading="lazy" src="/local/templates/privarka2023/images/main_catalog_blocks2.png" title="" alt=""/>
     </a>
     <a href="/oborudovanie/" class="main_catalog_blocks_item_a">
       Оборудование
@@ -138,7 +138,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
   <div class="main_about_item1">
     <div class="item1_layer1"></div>
     <div class="item1_layer2">
-      <img src="/local/templates/privarka2023/images/about_layer2.png" title="" alt=""/>
+      <img loading="lazy" src="/local/templates/privarka2023/images/about_layer2.png" title="" alt=""/>
     </div>
     <div class="item1_layer3">
       <p><b>Наша цель</b> – качественное удовлетворение потребностей и экспертный подход к оптимизации производственных процессов клиентов, квалифицированная техническая поддержка и консультирование.</p>
@@ -192,7 +192,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
 <div class="main_reviews">
   <div class="main_reviews_item1">
     <div class="main_reviews_quotes">
-      <img src="/local/templates/privarka2023/images/quotes.png" alt="" title=""/>
+      <img loading="lazy" src="/local/templates/privarka2023/images/quotes.png" alt="" title=""/>
     </div>
     <h3>Отзывы<br>о нас</h3>
   </div>
@@ -204,7 +204,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <div class="swiper-slide">
           <div class="main_reviews_card">
             <div class="main_reviews_card_item1">
-                <img src="/img/reviews5.png" alt="" title="">
+                <img loading="lazy" src="/img/reviews5.png" alt="" title="">
                 <div class="main_reviews_card_title">
                     <p>Заяц А.В.</p>
                     <span>Директор<br>ООО "БАЛТСВАРКА ГРУПП".</span>
@@ -212,7 +212,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
             </div>
             <div class="main_reviews_card_item2">
                 <div class="main_reviews_card_rating">
-                    <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                    <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                     <p>01.03.2024</p>
                 </div>
             </div>
@@ -227,7 +227,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <div class="swiper-slide">
           <div class="main_reviews_card">
             <div class="main_reviews_card_item1">
-              <img src="/img/reviews2.png" alt="" title="">
+              <img loading="lazy" src="/img/reviews2.png" alt="" title="">
               <div class="main_reviews_card_title">
                 <p>Проскурин М.П.</p>
                 <span>Руководитель ОМТС<br>ООО «Стройкомплекс».</span>
@@ -235,7 +235,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
             </div>
             <div class="main_reviews_card_item2">
               <div class="main_reviews_card_rating">
-                <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                 <p>12.02.2024</p>
               </div>
             </div>
@@ -250,7 +250,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <div class="swiper-slide">
           <div class="main_reviews_card">
             <div class="main_reviews_card_item1">
-              <img src="/img/reviews3.jpeg" alt="" title="">
+              <img loading="lazy" src="/img/reviews3.jpeg" alt="" title="">
               <div class="main_reviews_card_title">
                 <p>Карпов М.Ю.</p>
                 <span>Начальник снабжения<br>Шатурский завод металлоконструкций (ООО «НИЦ ТЛ ЛТД»).</span>
@@ -258,7 +258,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
             </div>
             <div class="main_reviews_card_item2">
               <div class="main_reviews_card_rating">
-                <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                 <p>05.01.2024</p>
               </div>
             </div>
@@ -272,7 +272,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <div class="swiper-slide">
           <div class="main_reviews_card">
             <div class="main_reviews_card_item1">
-              <img src="/img/logo_rew.jpeg" alt="" title="">
+              <img loading="lazy" src="/img/logo_rew.jpeg" alt="" title="">
               <div class="main_reviews_card_title">
                 <p>Кашин А.В.</p>
                 <span>Директор<br>ООО «Несущие Системы”.</span>
@@ -280,7 +280,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
             </div>
             <div class="main_reviews_card_item2">
               <div class="main_reviews_card_rating">
-                <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                 <p>23.10.2023</p>
               </div>
             </div>
@@ -295,7 +295,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <!-- <div class="swiper-slide">
           <div class="main_reviews_card">
             <div class="main_reviews_card_item1">
-              <img src="/local/templates/privarka2023/images/stock.png" alt="" title="">
+              <img loading="lazy" src="/local/templates/privarka2023/images/stock.png" alt="" title="">
               <div class="main_reviews_card_title">
                 <p>Гришатов Н.В.</p>
                 <span>Директор по маркетингу и логистике “тко механика”.</span>
@@ -303,7 +303,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
             </div>
             <div class="main_reviews_card_item2">
               <div class="main_reviews_card_rating">
-                <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                 <p>13.07.2021</p>
               </div>
             </div>
@@ -320,7 +320,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
   <div class="main_reviews_mobile">
     <div class="main_reviews_item1">
       <div class="main_reviews_quotes">
-        <img src="/local/templates/privarka2023/images/quotes.png" alt="" title=""/>
+        <img loading="lazy" src="/local/templates/privarka2023/images/quotes.png" alt="" title=""/>
       </div>
       <h3>Отзывы о нас</h3>
     </div>
@@ -331,7 +331,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="main_reviews_card_item1">
-                  <img src="/img/reviews5.png" alt="" title="">
+                  <img loading="lazy" src="/img/reviews5.png" alt="" title="">
                   <div class="main_reviews_card_title">
                       <p>Заяц А.В.</p>
                       <span>Директор<br>ООО "БАЛТСВАРКА ГРУПП".</span>
@@ -339,7 +339,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
               </div>
               <div class="main_reviews_card_item2">
                   <div class="main_reviews_card_rating">
-                      <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                      <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                       <p>01.03.2024</p>
                   </div>
               </div>
@@ -353,7 +353,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
           <div class="swiper-slide">
             <div class="main_reviews_card">
               <div class="main_reviews_card_item1">
-                <img src="/img/reviews2.png" alt="" title="">
+                <img loading="lazy" src="/img/reviews2.png" alt="" title="">
                 <div class="main_reviews_card_title">
                   <p>ПРОСКУРИН М.П.</p>
                   <span>Руководитель ОМТС<br>ООО «Стройкомплекс».</span>
@@ -361,7 +361,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
               </div>
               <div class="main_reviews_card_item2">
                 <div class="main_reviews_card_rating">
-                  <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                  <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                   <p>12.02.2024</p>
                 </div>
               </div>
@@ -374,7 +374,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
           <div class="swiper-slide">
             <div class="main_reviews_card">
               <div class="main_reviews_card_item1">
-                <img src="/img/reviews3.jpeg" alt="" title="">
+                <img loading="lazy" src="/img/reviews3.jpeg" alt="" title="">
                 <div class="main_reviews_card_title">
                   <p>Карпов М.Ю.</p>
                   <span>Начальник снабжения<br>Шатурский завод металлоконструкций (ООО «НИЦ ТЛ ЛТД»).</span>
@@ -382,7 +382,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
               </div>
               <div class="main_reviews_card_item2">
                 <div class="main_reviews_card_rating">
-                  <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                  <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                   <p>05.01.2024</p>
                 </div>
               </div>
@@ -394,7 +394,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
           <div class="swiper-slide">
             <div class="main_reviews_card">
               <div class="main_reviews_card_item1">
-                <img src="/img/logo_rew.jpeg" alt="" title="">
+                <img loading="lazy" src="/img/logo_rew.jpeg" alt="" title="">
                 <div class="main_reviews_card_title">
                   <p>КАШИН А.В.</p>
                   <span>Директор<br>ООО “«Несущие Системы”.</span>
@@ -402,7 +402,7 @@ $APPLICATION->SetTitle("Приварной и запрессовочный кр�
               </div>
               <div class="main_reviews_card_item2">
                 <div class="main_reviews_card_rating">
-                  <img src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
+                  <img loading="lazy" src="/local/templates/privarka2023/images/5stars.svg" alt="" title="">
                   <p>23.10.2023</p>
                 </div>
               </div>

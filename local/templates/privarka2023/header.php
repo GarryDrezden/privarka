@@ -63,7 +63,7 @@ use  \Bitrix\Main\Page\Asset;
                 ecommerce:"dataLayer"
         });
         </script>
-        <noscript><div><img src="https://mc.yandex.ru/watch/66558274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/66558274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
         <div class="wrapper">
             <div class="header">
@@ -80,12 +80,12 @@ use  \Bitrix\Main\Page\Asset;
                                     <div class="content_block_catalog" style="display: none;">
                                         <li>
                                             <a class="menu-item" href="/krepezh/">
-                                            <img src="/local/templates/privarka2023/images/menu_krep.png" title="Крепеж" alt="Крепеж"/>
+                                            <img loading="lazy" src="/local/templates/privarka2023/images/menu_krep.png" title="Крепеж" alt="Крепеж"/>
                                             Крепеж</a>
                                         </li>
                                         <li>
                                             <a class="menu-item" href="/oborudovanie/">
-                                            <img src="/local/templates/privarka2023/images/menu_equip.png" title="Оборудование" alt="Оборудование"/>
+                                            <img loading="lazy" src="/local/templates/privarka2023/images/menu_equip.png" title="Оборудование" alt="Оборудование"/>
                                             Оборудование</a>
                                         </li>
                                     </div>
@@ -145,12 +145,12 @@ use  \Bitrix\Main\Page\Asset;
                         </div>
                         <div class="logo">
                             <a href="/">
-                                <img class="logo_img" src="/local/templates/privarka2023/images/logo.png"/>
+                                <img class="logo_img" loading="lazy" src="/local/templates/privarka2023/images/logo.png"/>
                             </a>
                         </div>
                         <div class="mob_call_back_search">
                             <div id="MobBackCallBtn">
-                                <img src="/local/templates/privarka2023/images/mob_call_back.svg" title=""/>
+                                <img loading="lazy" src="/local/templates/privarka2023/images/mob_call_back.svg" title=""/>
                             </div>
                             <!-- Модальном окно -->
                             <div id="ModalMobBackCall" class="modalMobBackCall">
@@ -186,7 +186,7 @@ use  \Bitrix\Main\Page\Asset;
                                 </div>
                             </div>
                         <div id="SearchBtn">
-                            <img src="/local/templates/privarka2023/images/mob_search.svg" title=""/>
+                            <img loading="lazy" src="/local/templates/privarka2023/images/mob_search.svg" title=""/>
                         </div>
                             <!-- Модальном окно -->
                             <div id="ModalSearch" class="modal">
@@ -230,7 +230,7 @@ use  \Bitrix\Main\Page\Asset;
                 <div class="head">
                     <div class="logo">
                         <a href="/">
-                                <img class="logo_img" src="/local/templates/privarka2023/images/logo.png"/>
+                                <img class="logo_img" loading="lazy" src="/local/templates/privarka2023/images/logo.png"/>
                         </a>
                     </div>
                     <div class="head_contacts_and_call_back">
@@ -248,16 +248,16 @@ use  \Bitrix\Main\Page\Asset;
                     <div class="head_user_and_basket">
                         <div class="head_user">
                             <?if($USER->IsAuthorized()){?>
-                                <a href="/personal/"><img src="/local/templates/privarka2023/images/head_user.svg" alt="" title=""/></a>
+                                <a href="/personal/"><img loading="lazy" src="/local/templates/privarka2023/images/head_user.svg" alt="" title=""/></a>
                             <?}else{?>
-                                <a href="/auth/"><img src="/local/templates/privarka2023/images/head_user.svg" alt="" title=""/></a>
+                                <a href="/auth/"><img loading="lazy" src="/local/templates/privarka2023/images/head_user.svg" alt="" title=""/></a>
                             <?}?>
                         </div>
                         <div class="head_vertical_line">
-                            <img src="/local/templates/privarka2023/images/head_line.svg" alt="" title=""/>
+                            <img loading="lazy" src="/local/templates/privarka2023/images/head_line.svg" alt="" title=""/>
                         </div>
                         <div class="head_basket">
-                            <a href="/basket/"><img src="/local/templates/privarka2023/images/head_basket.svg" alt="" title=""/></a>
+                            <a href="/basket/"><img loading="lazy" src="/local/templates/privarka2023/images/head_basket.svg" alt="" title=""/></a>
                         </div>
                     </div>
                 </div>
@@ -273,7 +273,7 @@ use  \Bitrix\Main\Page\Asset;
                             <ul class="dropdown-menu head_menu_ul dropdown-menu-lg-star">
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item" href="/krepezh/">
-                                    <img src="/local/templates/privarka2023/images/menu_krep.png" title="Крепеж" alt="Крепеж"/>
+                                    <img loading="lazy" src="/local/templates/privarka2023/images/menu_krep.png" title="Крепеж" alt="Крепеж"/>
                                     Крепеж</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/krepezh/zapressovochnyy_krepyezh/">Запрессовочный крепёж</a></li>
@@ -285,7 +285,7 @@ use  \Bitrix\Main\Page\Asset;
                                 </li>
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item" href="/oborudovanie/">
-                                    <img src="/local/templates/privarka2023/images/menu_equip.png" title="Оборудование" alt="Оборудование"/>
+                                    <img loading="lazy" src="/local/templates/privarka2023/images/menu_equip.png" title="Оборудование" alt="Оборудование"/>
                                     Оборудование</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="/oborudovanie/oborudovanie_dlya_privarki_krepezha/">Оборудование для приварки крепежа</a></li>

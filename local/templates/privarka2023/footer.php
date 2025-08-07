@@ -9,7 +9,7 @@
                 </div>
                 <div class="footer_container">
                     <div class="footer_menu footer_address">
-                        <img src="/img/footer_logo.png" alt="" title="" />
+                        <img loading="lazy" src="/img/footer_logo.png" alt="" title="" />
                         <p class="pt-10 region_address">
                             <?=$region_address;?>
                         </p>
@@ -64,7 +64,7 @@
                     <div class="mobile">
                         <div class="footer_menu_mobile">
                             <div class="footer_logo">
-                                <img src="/img/footer_logo.png" alt="" title="" />
+                                <img loading="lazy" src="/img/footer_logo.png" alt="" title="" />
                             </div>
                             <div class="footer_menu_item footer_mobile_address">
                                 <p class="pt-10 region_address">
@@ -127,17 +127,17 @@
                         <div class="footer_bottom_item footer_bottom_social">
                             <p>Наши соц сети:</p>
                             <a href="https://vk.com/kontur97" target="_blank">
-                                <img src="/local/templates/privarka2023/images/vk.png" title="" alt=""/>
+                                <img loading="lazy" src="/local/templates/privarka2023/images/vk.png" title="" alt=""/>
                             </a>
                             <a href="https://dzen.ru/kontur" target="_blank">
-                                <img src="/local/templates/privarka2023/images/zen.svg" title="" alt=""/>
+                                <img loading="lazy" src="/local/templates/privarka2023/images/zen.svg" title="" alt=""/>
                             </a>
                             <a href="https://www.youtube.com/channel/UCFZ5TMrd8RaHqRwSeAyts-g" target="_blank">
-                                <img src="/local/templates/privarka2023/images/yt.png" title="" alt=""/>
+                                <img loading="lazy" src="/local/templates/privarka2023/images/yt.png" title="" alt=""/>
                             </a>
                         </div>
                         <div class="footer_bottom_item">
-                            <img src="/local/templates/privarka2023/images/pay_systems.png" title="" alt=""/>
+                            <img loading="lazy" src="/local/templates/privarka2023/images/pay_systems.png" title="" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                                 <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
                             </div>
                             <div class="holder" id="cap-block">
-                                <img id="cap-img" style="height: 53px;width: 180px;" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>">
+                                <img id="cap-img" loading="lazy" style="height: 53px;width: 180px;" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>">
                             </div>
                         </div>     
                         <br>
@@ -246,7 +246,7 @@
                                 <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
                             </div>
                             <div class="holder" id="cap-block">
-                                <img id="cap-img" style="height: 53px;width: 180px;" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>">
+                                <img id="cap-img" loading="lazy" style="height: 53px;width: 180px;" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>">
                             </div>
                         </div>     
                         <br>
@@ -585,7 +585,7 @@
         <!-- <div id="promo-overlay" class="promo-overlay">
             <div class="promo-modal">
                 <a id="promo-link" href="/news/novosti/vystavka-metalloobrabotka-2025/">
-                    <img src="/bitrix/templates/k97/images/banner_meta_l2025.jpg" alt="Приглашаем посетить наш стенд 26-29 мая">
+                    <img loading="lazy" src="/bitrix/templates/k97/images/banner_meta_l2025.jpg" alt="Приглашаем посетить наш стенд 26-29 мая">
                 </a>
                 <button id="promo-close" class="promo-close" aria-label="Закрыть">&times;</button>
             </div>
