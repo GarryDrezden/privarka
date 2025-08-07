@@ -40,7 +40,7 @@
 	{
 		bigDataLoad: function()
 		{
-			var url = 'https://analytics.bitrix.info/crecoms/v1_0/recoms.php',
+			var url = '/ajax/analytics_proxy.php',
 				data = BX.ajax.prepareData(this.bigData.params);
 
 			if (data)
