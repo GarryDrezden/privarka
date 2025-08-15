@@ -9,58 +9,58 @@
 </tr>
 <tr>
     <td class="table_title">3</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-TP-3-3/apply/">TP-3-3</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-3/apply/">TP-3MM-3</a></td>
     <td></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td class="table_title">4</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-TP-3-4/apply/">TP-3-4</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-4/apply/">TP-3MM-4</a></td>
     <td></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td class="table_title">6</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-3mm-6/apply/">TP-M3-6</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-6/apply/">TP-M4-6</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-6/apply/">TP-3MM-6</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-6/apply/">TP-4MM-6</a></td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td class="table_title">8</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-3mm-8/apply/">TP-M3-8</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-8/apply/">TP-M4-8</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-5mm-8/apply/">TP-M5-8</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-8/apply/">TP-3MM-8</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-8/apply/">TP-4MM-8</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-5mm-8/apply/">TP-5MM-8</a></td>
     <td></td>
 </tr>
 <tr>
     <td class="table_title">10</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-3mm-10/apply/">TP-M3-10</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-10/apply/">TP-M4-10</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-5mm-10/apply/">TP-M5-10</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-6mm-10/apply/">TP-M6-10</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-10/apply/">TP-3MM-10</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-10/apply/">TP-4MM-10</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-5mm-10/apply/">TP-5MM-10</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-6mm-10/apply/">TP-6MM-10</a></td>
 </tr>
 <tr>
     <td class="table_title">12</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-3mm-12/apply/">TP-M3-12</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-12/apply/">TP-M4-12</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-5mm-12/apply/">TP-M5-12</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-6mm-12/apply/">TP-M6-12</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-12/apply/">TP-3MM-12</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-12/apply/">TP-4MM-12</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-5mm-12/apply/">TP-5MM-12</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-6mm-12/apply/">TP-6MM-12</a></td>
 </tr>
 <tr>
     <td class="table_title">16</td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-3mm-16/apply/">TP-M3-16</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-16/apply/">TP-M4-16</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-5mm-16/apply/">TP-M5-16</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-6mm-16/apply/">TP-M6-16</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-3mm-16/apply/">TP-3MM-16</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-16/apply/">TP-4MM-16</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-5mm-16/apply/">TP-5MM-16</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-6mm-16/apply/">TP-6MM-16</a></td>
 </tr>
 <tr>
     <td class="table_title">20</td>
     <td></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-4mm-20/apply/">TP-M4-20</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-5mm-20/apply/">TP-M5-20</a></td>
-    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tr%20tp-6mm-20/apply/">TP-M6-20</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-4mm-20/apply/">TP-4MM-20</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-5mm-20/apply/">TP-5MM-20</a></td>
+    <td><a href="/krepezh/zapressovochnyy_krepyezh/filter/article-is-tp-6mm-20/apply/">TP-6MM-20</a></td>
 </tr>
 </table>
