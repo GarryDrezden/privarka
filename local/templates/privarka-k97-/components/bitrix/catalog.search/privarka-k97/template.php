@@ -72,12 +72,11 @@ if (Loader::includeModule('search')){
 				"ELEMENT_SORT_ORDER" => $arElements,
 			];
 		}
-	}else{
-		if (is_array($arElements)){
-			echo GetMessage("CT_BCSE_NOT_FOUND");
-			return;
-		}
-	}
+       }else{
+               if (is_array($arElements)){
+                       LocalRedirect('/404.php');
+               }
+       }
 }else{
 	$searchQuery = '';
 	if (isset($_REQUEST['q']) && is_string($_REQUEST['q']))

@@ -76,14 +76,13 @@ if (Loader::includeModule('search'))
 			];
 		}
 	}
-	else
-	{
-		if (is_array($arElements))
-		{
-			echo GetMessage("CT_BCSE_NOT_FOUND");
-			return;
-		}
-	}
+       else
+       {
+               if (is_array($arElements))
+               {
+                       LocalRedirect('/404.php');
+               }
+       }
 }
 else
 {
