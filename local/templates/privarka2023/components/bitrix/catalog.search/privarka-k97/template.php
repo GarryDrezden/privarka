@@ -17,6 +17,7 @@ use Bitrix\Main\Loader;
 $this->setFrameMode(true);
 
 global $searchFilter;
+$searchFilter = [];
 
 $elementOrder = [];
 if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'N')
@@ -76,10 +77,13 @@ if (Loader::includeModule('search'))
                         ];
                 }
         }
-       else
-       {
-               LocalRedirect('/404.php');
-       }
+        else
+        {
+                \CHTTP::SetStatus('404 Not Found');
+                @define('ERROR_404', 'Y');
+                require $_SERVER['DOCUMENT_ROOT'] . '/404.php';
+                return;
+        }
 }
 else
 {
