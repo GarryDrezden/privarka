@@ -63,25 +63,22 @@ if (Loader::includeModule('search'))
 			'HIDE_ICONS' => 'Y',
 		]
 	);
-	if (!empty($arElements) && is_array($arElements))
-	{
-		$searchFilter = [
-			"ID" => $arElements,
-		];
-		if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
-		{
-			$elementOrder = [
-				"ELEMENT_SORT_FIELD" => "ID",
-				"ELEMENT_SORT_ORDER" => $arElements,
-			];
-		}
-	}
+        if (is_array($arElements) && !empty($arElements))
+        {
+                $searchFilter = [
+                        "ID" => $arElements,
+                ];
+                if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
+                {
+                        $elementOrder = [
+                                "ELEMENT_SORT_FIELD" => "ID",
+                                "ELEMENT_SORT_ORDER" => $arElements,
+                        ];
+                }
+        }
        else
        {
-               if (is_array($arElements))
-               {
-                       LocalRedirect('/404.php');
-               }
+               LocalRedirect('/404.php');
        }
 }
 else
