@@ -184,28 +184,28 @@
                     <div class="form-group">
                         <label for="backcall_name">Имя</label>
                         <input type="text" name="backcall_name" id="backcall_name" class="form-control" placeholder="Введите ваше имя" value="" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="backcall_phone">Телефон</label>
+                        <input type="text" name="backcall_phone" id="backcall_phone" class="form-control form_phone" placeholder="+7 (___) ___-__-__" value="" required>
                     </div>
                     <div class="backcall-row">
                         <div class="form-group flex-grow">
-                            <label for="backcall_phone">Телефон</label>
-                            <input type="text" name="backcall_phone" id="backcall_phone" class="form-control form_phone" placeholder="+7 (___) ___-__-__" value="" required>
+                        <label for="cap_input">Введите символы с картинки</label>
+                        <input id="cap_input" name="captcha_word" type="text" class="form-control" placeholder="Напишите символы">
+                        <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
                         </div>
                         <div class="captcha-image" id="cap-block">
                             <img id="cap-img" loading="lazy" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>" alt="Капча">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="cap_input">Введите символы с картинки</label>
-                        <input id="cap_input" name="captcha_word" type="text" class="form-control" placeholder="Напишите символы">
-                        <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
-                    </div>
                     <button type="submit" onclick="backCallForm(event)" class="but_small backcall_button backcall-submit">Отправить</button>
                     <label class="politika-konfidentsialnosti">
                         <input type="checkbox" value="N" checked name="">
-                        <span class="main-user-consent-request-announce-link">Нажимая кнопку «Подтвердить заказ», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в <a href="/politika-konfidentsialnosti/" target="_blank">Согласии на обработку персональных данных</a></span>
+                        <span class="main-user-consent-request-announce-link">Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в <a href="/politika-konfidentsialnosti/" target="_blank">Согласии на обработку персональных данных</a></span>
                     </label>
                 </form>
-                <div id="backcall_message_desktop"></div>
+                <div id="backcall_message"></div>
             </div>
         </div>
         <!-- Модальном окно обратный звонок для товаров без цены -->
@@ -298,16 +298,48 @@
             var modalBackCall = document.getElementById("ModalBackCall");
             var btn4 = document.getElementById("BackCallBtn");
             var button = document.getElementById("CloseBackCall");
+            
+            function resetBackCallModal() {
+                // Восстанавливаем header и форму
+                $('.backcall-header').show();
+                $('#backcall_form').show();
+                // Очищаем сообщение
+                $('#backcall_message').html('');
+                // Сбрасываем форму
+                document.getElementById('backcall_form').reset();
+                
+                // Восстанавливаем стили modal-content
+                var modal = document.getElementById('ModalBackCall');
+                if(modal) {
+                    var modalContent = modal.querySelector('.modal-content');
+                    if(modalContent) {
+                        modalContent.style.removeProperty('background');
+                        modalContent.style.removeProperty('box-shadow');
+                    }
+                }
+            }
+            
+            function closeSuccessMessage() {
+                var modalBackCall = document.getElementById("ModalBackCall");
+                if(modalBackCall){
+                    modalBackCall.style.display = "none";
+                    resetBackCallModal();
+                }
+            }
+            
             if (btn4) {
                 btn4.onclick = function() {
+                    resetBackCallModal();
                     modalBackCall.style.display = "flex";
                 }
             }
             button.onclick = function() {
-            modalBackCall.style.display = "none";
+                resetBackCallModal();
+                modalBackCall.style.display = "none";
             }
             window.onclick = function(event) {
                 if (event.target == modalBackCall) {
+                    resetBackCallModal();
                     modalBackCall.style.display = "none";
                 }
             }
@@ -379,12 +411,70 @@
                         data: $data,
                         dataType: "json",
                         success: function(data){
-                            if(data.done == true){
-                                $('#backcall_message_desktop').html(data.mess);
+                            console.log('Response received:', data);
+                            if(data && data.done == true){
+                                // Скрываем header и форму с использованием !important
+                                var modal = document.getElementById('ModalBackCall');
+                                if(modal) {
+                                    var modalContent = modal.querySelector('.modal-content');
+                                    var header = modal.querySelector('.backcall-header');
+                                    var form = modal.querySelector('#backcall_form');
+                                    
+                                    console.log('Header found:', header);
+                                    console.log('Form found:', form);
+                                    
+                                    // Применяем стили к modal-content
+                                    if(modalContent) {
+                                        modalContent.style.setProperty('background', 'transparent', 'important');
+                                        modalContent.style.setProperty('box-shadow', 'none', 'important');
+                                    }
+                                    
+                                    if(header) {
+                                        header.style.setProperty('display', 'none', 'important');
+                                        console.log('Header hidden');
+                                    }
+                                    if(form) {
+                                        form.style.setProperty('display', 'none', 'important');
+                                        console.log('Form hidden');
+                                    }
+                                    
+                                    // Показываем уведомление об успехе в нужном формате
+                                    var messageDiv = modal.querySelector('#backcall_message');
+                                    console.log('Message div found:', messageDiv);
+                                    if(messageDiv) {
+                                        messageDiv.className = 'success-message';
+                                        messageDiv.style.setProperty('display', 'block', 'important');
+                                        messageDiv.innerHTML = '<div class="success-card"><button type="button" class="success-close" onclick="closeSuccessMessage()" aria-label="Закрыть"><span aria-hidden="true">&times;</span></button><div class="success-title">Форма отправлена</div><div class="success-text">Спасибо за обращение! Мы свяжемся с вами в ближайшее время.</div></div>';
+                                        console.log('Message set');
+                                        
+                                        // Автозакрытие через 3 секунды
+                                        setTimeout(function(){
+                                            var modalBackCall = document.getElementById("ModalBackCall");
+                                            if(modalBackCall){
+                                                modalBackCall.style.display = "none";
+                                                resetBackCallModal();
+                                            }
+                                        }, 3000);
+                                    }
+                                }
                             }else{
-                                $('#backcall_message_desktop').html(data.mess);
-                                ReloadCapture(data.capture_reload_code);
+                                var modal = document.getElementById('ModalBackCall');
+                                if(modal) {
+                                    var messageDiv = modal.querySelector('#backcall_message');
+                                    if(messageDiv) {
+                                        messageDiv.style.setProperty('display', 'block', 'important');
+                                        messageDiv.innerHTML = data.mess || 'Произошла ошибка';
+                                    }
+                                }
+                                if(data.capture_reload_code){
+                                    ReloadCapture(data.capture_reload_code);
+                                }
                             }
+                        },
+                        error: function(xhr, status, error){
+                            console.error('AJAX Error:', status, error);
+                            console.error('Response:', xhr.responseText);
+                            $('#backcall_message').html('<div class="alert alert-danger" role="alert">Произошла ошибка при отправке формы. Попробуйте еще раз.</div>');
                         }
                     });
                 }
