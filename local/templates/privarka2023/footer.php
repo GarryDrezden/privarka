@@ -141,7 +141,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
         <?$code = $APPLICATION->CaptchaGetCode();?>
         <script>
@@ -171,49 +170,44 @@
         </script>
         <!-- Модальном окно обратный звонок -->
         <div id="ModalBackCall" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="backCallModalLabel">Введите Ваши данные</h5>
-                    <button type="button" id="CloseBackCall" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div style="text-align:left;padding:0 20px;">
-                    <p>Наш менеджер свяжется с Вами в ближайшее время</p>
-                </div>
-                <form id="backcall_form" action="/ajax/forms/backcall.php" method="post">
-                    <div class="modal-body back_call_list">
-                        <div class="input-group">
-                            <span class="input-group-text">Имя</span>
-                            <input type="text" name="backcall_name" id="backcall_name" class="form-control" value="" required/>
-                        </div>     
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-text">Телефон</span>
-                            <input type="text" name="backcall_phone" id="backcall_phone" class="form-control form_phone" value="" required/>
-                        </div>     
-                        <br>
-                        <div class="input-group" style="justify-content: space-between;flex-flow: row;">
-                            <div class="holder" id="cap-block2">
-                                <span class="input-group-text">Введите символы с картинки</span>
-                                <input id="cap_input" name="captcha_word" type="text">
-                                <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
-                            </div>
-                            <div class="holder" id="cap-block">
-                                <img id="cap-img" loading="lazy" style="height: 53px;width: 180px;" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>">
-                            </div>
-                        </div>     
-                        <br>
+            <div class="modal-content backcall-card">
+                <div class="backcall-header">
+                    <div class="backcall-header-text">
+                        <h5 class="modal-title" id="backCallModalLabel">Введите Ваши данные</h5>
+                        <p class="backcall-subtitle">Наш менеджер свяжется с Вами в ближайшее время</p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" onclick="backCallForm(event)" class="but_small backcall_button">Отправить</button>
+                    <button type="button" id="CloseBackCall" class="backcall-close" data-bs-dismiss="modal" aria-label="Закрыть">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="backcall_form" class="backcall-form" action="/ajax/forms/backcall.php" method="post">
+                    <div class="form-group">
+                        <label for="backcall_name">Имя</label>
+                        <input type="text" name="backcall_name" id="backcall_name" class="form-control" placeholder="Введите ваше имя" value="" required>
                     </div>
+                    <div class="backcall-row">
+                        <div class="form-group flex-grow">
+                            <label for="backcall_phone">Телефон</label>
+                            <input type="text" name="backcall_phone" id="backcall_phone" class="form-control form_phone" placeholder="+7 (___) ___-__-__" value="" required>
+                        </div>
+                        <div class="captcha-image" id="cap-block">
+                            <img id="cap-img" loading="lazy" src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($code);?>" alt="Капча">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cap_input">Введите символы с картинки</label>
+                        <input id="cap_input" name="captcha_word" type="text" class="form-control" placeholder="Напишите символы">
+                        <input name="captcha_code" id="cap_code" value="<?=htmlspecialchars($code);?>" type="hidden">
+                    </div>
+                    <button type="submit" onclick="backCallForm(event)" class="but_small backcall_button backcall-submit">Отправить</button>
                     <label class="politika-konfidentsialnosti">
-                        <input type="checkbox" value="N" checked="" name="">
+                        <input type="checkbox" value="N" checked name="">
                         <span class="main-user-consent-request-announce-link">Нажимая кнопку «Подтвердить заказ», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в <a href="/politika-konfidentsialnosti/" target="_blank">Согласии на обработку персональных данных</a></span>
                     </label>
                 </form>
                 <div id="backcall_message_desktop"></div>
             </div>
-        </div>  
+        </div>
         <!-- Модальном окно обратный звонок для товаров без цены -->
         <div id="ModalBackCallCatalog" class="modal">
             <div class="modal-content">
@@ -306,7 +300,7 @@
             var button = document.getElementById("CloseBackCall");
             if (btn4) {
                 btn4.onclick = function() {
-                    modalBackCall.style.display = "block";
+                    modalBackCall.style.display = "flex";
                 }
             }
             button.onclick = function() {
