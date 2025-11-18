@@ -84,19 +84,17 @@ $code_backcall = $APPLICATION->CaptchaGetCode();
 
 		<div class="row catalog_all">
 			<div class="card_sections_block">
-				<?foreach($arResult["ITEMS"] as $arItem):
-						$catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
-					if(empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])){
-						$res = CIBlockSection::GetByID($arItem['PROPERTIES']['CATALOG_PAGE']['VALUE']);
-						$ar_res = $res->GetNext();
-						$catalog_page = $ar_res['SECTION_PAGE_URL'];
-						$chars = ['krepezh/','oborudovanie/'];
-						$catalog_page = str_replace($chars, '', $catalog_page);
-						$url_request = $_SERVER['REQUEST_URI'];
-					}else{
-						$catalog_page = rawurldecode($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE']);
-						$url_request = rawurldecode($_SERVER['REQUEST_URI']);
-					}
+<?foreach($arResult["ITEMS"] as $arItem):
+$catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
+if(empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])){
+$res = CIBlockSection::GetByID($arItem['PROPERTIES']['CATALOG_PAGE']['VALUE']);
+$ar_res = $res->GetNext();
+$catalog_page = $ar_res['SECTION_PAGE_URL'];
+$url_request = $_SERVER['REQUEST_URI'];
+}else{
+$catalog_page = rawurldecode($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE']);
+$url_request = rawurldecode($_SERVER['REQUEST_URI']);
+}
 						//echo $catalog_page.'<br>';
 						//echo $url_request.'<br>';
 						//echo $_SERVER['REQUEST_URI'];
