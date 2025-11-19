@@ -82,41 +82,67 @@ $code_backcall = $APPLICATION->CaptchaGetCode();
 			<?=$arResult["NAV_STRING"]?><br />
 		<?endif;?>
 
-		<div class="row catalog_all">
-			<div class="card_sections_block">
+               <?
+              $sectionPages = [];
+              $sectionIds = [];
+
+              foreach ($arResult['ITEMS'] as $sectionItem)
+              {
+                      $sectionId = (int)$sectionItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
+
+                      if ($sectionId > 0)
+                      {
+                              $sectionIds[$sectionId] = true;
+                      }
+              }
+
+              if (!empty($sectionIds))
+              {
+                      $res = CIBlockSection::GetList(
+                              [],
+                              [
+                                      'ID' => array_keys($sectionIds),
+                                      'CHECK_PERMISSIONS' => 'N',
+                              ],
+                              false,
+                              ['ID', 'SECTION_PAGE_URL']
+                      );
+
+                      while ($section = $res->GetNext())
+                      {
+                              $sectionPages[(int)$section['ID']] = $section['SECTION_PAGE_URL'];
+                      }
+              }
+               ?>
+               <div class="row catalog_all">
+                       <div class="card_sections_block">
+<?php
+$rawRequestUri = $_SERVER['REQUEST_URI'] ?? '';
+$decodedRequestUri = rawurldecode($rawRequestUri);
+$url_request = $rawRequestUri;
+?>
 <?foreach($arResult["ITEMS"] as $arItem):
 $catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
 $catalog_page = '';
-$url_request = $_SERVER['REQUEST_URI'];
+$comparison_request = $rawRequestUri;
 if(empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])){
 $sectionId = (int)$arItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
-if($sectionId > 0){
-$res = CIBlockSection::GetList(
-array(),
-array(
-"ID" => $sectionId,
-"CHECK_PERMISSIONS" => "N"
-),
-false,
-array("SECTION_PAGE_URL")
-);
-if($ar_res = $res->GetNext()){
-$catalog_page = $ar_res['SECTION_PAGE_URL'];
-}
+if($sectionId > 0 && isset($sectionPages[$sectionId])){
+$catalog_page = $sectionPages[$sectionId];
 }
 }else{
 $catalog_page = rawurldecode($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE']);
-$url_request = rawurldecode($_SERVER['REQUEST_URI']);
+$comparison_request = $decodedRequestUri;
 }
 if(!$catalog_page){
 continue;
 }
-						//echo $catalog_page.'<br>';
-						//echo $url_request.'<br>';
-						//echo $_SERVER['REQUEST_URI'];
-						if($catalog_page == $url_request){
-				?>
-				<div class="card_section" data-id="<?=$arItem['ID']?>">
+                                                //echo $catalog_page.'<br>';
+                                                //echo $url_request.'<br>';
+                                                //echo $_SERVER['REQUEST_URI'];
+                                                if($catalog_page == $comparison_request){
+                                ?>
+                                <div class="card_section" data-id="<?=$arItem['ID']?>">
 					<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?>" class="card_section_img" alt="...">
 					<div class="card_section_body">
 						<p class="card_section_title">
@@ -129,7 +155,7 @@ continue;
 				<?}else{}?>
 				<? endforeach;?>
 
-				<?if($url_request == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
+<?if($rawRequestUri == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
 					<style>
 						.other_all_form{
 							display: flex;
