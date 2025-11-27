@@ -75,12 +75,10 @@ $this->setFrameMode(true);
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
 		"SEARCH_PAGE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["search"],
 
-        // Отключаем кеширование, чтобы блок отображался актуально для всех пользователей
-        "CACHE_TYPE" => "N",
+		"CACHE_TYPE" => "N",
         "CACHE_TIME" => 0,
-        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-        "CACHE_GROUPS" => "N",
-        "CHECK_PERMISSIONS" => "N",
+		// "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+		// "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
 
 		"PREVIEW_TRUNCATE_LEN" => $arParams["PREVIEW_TRUNCATE_LEN"],
 		"ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
@@ -121,9 +119,9 @@ $this->setFrameMode(true);
 		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
 
 		"USE_RATING" => $arParams["USE_RATING"],
-        "DISPLAY_AS_RATING" => $arParams["DISPLAY_AS_RATING"],
-        "MAX_VOTE" => $arParams["MAX_VOTE"],
-        "VOTE_NAMES" => $arParams["VOTE_NAMES"],
+		"DISPLAY_AS_RATING" => $arParams["DISPLAY_AS_RATING"],
+		"MAX_VOTE" => $arParams["MAX_VOTE"],
+		"VOTE_NAMES" => $arParams["VOTE_NAMES"],
 
 		"USE_SHARE" => $arParams["LIST_USE_SHARE"],
 		"SHARE_HIDE" => $arParams["SHARE_HIDE"],
