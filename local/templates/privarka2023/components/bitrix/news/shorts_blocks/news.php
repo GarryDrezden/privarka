@@ -75,12 +75,10 @@ $this->setFrameMode(true);
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
 		"SEARCH_PAGE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["search"],
 
-        // Отключаем кеширование, чтобы блок отображался актуально для всех пользователей
-        "CACHE_TYPE" => "N",
+		"CACHE_TYPE" => "N",
         "CACHE_TIME" => 0,
-        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-        "CACHE_GROUPS" => "N",
-        "CHECK_PERMISSIONS" => "N",
+		// "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+		// "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
 
 		"PREVIEW_TRUNCATE_LEN" => $arParams["PREVIEW_TRUNCATE_LEN"],
 		"ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],

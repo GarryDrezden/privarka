@@ -83,111 +83,38 @@ $code_backcall = $APPLICATION->CaptchaGetCode();
 			<?=$arResult["NAV_STRING"]?><br />
 		<?endif;?>
 
-               <?
-              $sectionPages = [];
-              $sectionIds = [];
-
-              foreach ($arResult['ITEMS'] as $sectionItem)
-              {
-                      $sectionId = (int)$sectionItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
-
-                      if ($sectionId > 0)
-                      {
-                              $sectionIds[$sectionId] = true;
-                      }
-              }
-
-              if (!empty($sectionIds))
-              {
-                      $res = CIBlockSection::GetList(
-                              [],
-                              [
-                                      'ID' => array_keys($sectionIds),
-                                      'CHECK_PERMISSIONS' => 'N',
-                              ],
-                              false,
-                              ['ID', 'SECTION_PAGE_URL']
-                      );
-
-                      while ($section = $res->GetNext())
-                      {
-                              $sectionPages[(int)$section['ID']] = $section['SECTION_PAGE_URL'];
-                      }
-              }
-               ?>
-               <div class="row catalog_all">
-                       <div class="card_sections_block">
-<?php
-require_once __DIR__ . '/helpers.php';
-
-$rawRequestUri = $_SERVER['REQUEST_URI'] ?? '';
-$normalizedRequestPath = shortsNormalizePath($rawRequestUri);
-$debugData = [
-    'request' => [
-        'raw' => $rawRequestUri,
-        'normalized' => $normalizedRequestPath,
-    ],
-    'items' => [],
-];
-$url_request = $rawRequestUri;
-
-foreach ($arResult['ITEMS'] as $arItem):
-        $catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
-        $catalog_page = '';
-
-        $debugItem = [
-            'id' => $arItem['ID'],
-            'name' => $arItem['NAME'],
-            'link' => $catalog_link,
-            'anchor_page' => $arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'],
-            'catalog_page_raw' => null,
-            'normalized_catalog_path' => null,
-            'matches' => false,
-        ];
-
-        if (empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])) {
-                $sectionId = (int)$arItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
-
-                if ($sectionId > 0 && isset($sectionPages[$sectionId])) {
-                        $catalog_page = $sectionPages[$sectionId];
-                }
-        } else {
-            $catalog_page = $arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'];
-        }
-
-        if (!$catalog_page) {
-                $debugItem['skipped_reason'] = 'no_catalog_page';
-                $debugData['items'][] = $debugItem;
-                continue;
-        }
-
-        $normalizedCatalogPath = shortsNormalizePath($catalog_page);
-        $debugItem['catalog_page_raw'] = $catalog_page;
-        $debugItem['normalized_catalog_path'] = $normalizedCatalogPath;
-        $debugItem['matches'] = $normalizedCatalogPath === $normalizedRequestPath;
-        $debugData['items'][] = $debugItem;
-
-        if ($normalizedCatalogPath === $normalizedRequestPath) {
-?>
-                                <div class="card_section" data-id="<?=$arItem['ID']?>">
-                                        <img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?>" class="card_section_img" alt="...">
-                                        <div class="card_section_body">
-                                                <p class="card_section_title">
-                                                        <a href="<?=$catalog_link?>">
-                                                                <?echo $arItem["NAME"]?>
-                                                        </a>
-                                                </p>
-                                        </div>
-                                </div>
-<?
-        }
-endforeach;
-?>
-<script>
-console.group('shorts_blocks debug');
-console.log(<?=json_encode($debugData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)?>);
-console.groupEnd();
-</script>
+		<div class="row catalog_all">
+			<div class="card_sections_block">
+				<?foreach($arResult["ITEMS"] as $arItem):
+						$catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
+					if(empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])){
+						$res = CIBlockSection::GetByID($arItem['PROPERTIES']['CATALOG_PAGE']['VALUE']);
+						$ar_res = $res->GetNext();
+						$catalog_page = $ar_res['SECTION_PAGE_URL'];
+						$chars = ['krepezh/','oborudovanie/'];
+						$catalog_page = str_replace($chars, '', $catalog_page);
+						$url_request = $_SERVER['REQUEST_URI'];
+					}else{
+						$catalog_page = rawurldecode($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE']);
+						$url_request = rawurldecode($_SERVER['REQUEST_URI']);
+					}
+						//echo $catalog_page.'<br>';
+						//echo $url_request.'<br>';
+						//echo $_SERVER['REQUEST_URI'];
+						if($catalog_page == $url_request){
+				?>
+				<div class="card_section" data-id="<?=$arItem['ID']?>">
+					<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?>" class="card_section_img" alt="...">
+					<div class="card_section_body">
+						<p class="card_section_title">
+							<a href="<?=$catalog_link?>">
+								<?echo $arItem["NAME"]?>
+							</a>
+						</p>
+					</div>
+				</div>
+				<?}else{}?>
+				<? endforeach;?>
 
 				<?if($url_request == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
 					<style>
