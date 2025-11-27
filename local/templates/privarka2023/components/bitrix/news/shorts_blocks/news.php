@@ -121,9 +121,9 @@ $this->setFrameMode(true);
 		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
 
 		"USE_RATING" => $arParams["USE_RATING"],
-        "DISPLAY_AS_RATING" => $arParams["DISPLAY_AS_RATING"],
-        "MAX_VOTE" => $arParams["MAX_VOTE"],
-        "VOTE_NAMES" => $arParams["VOTE_NAMES"],
+		"DISPLAY_AS_RATING" => $arParams["DISPLAY_AS_RATING"],
+		"MAX_VOTE" => $arParams["MAX_VOTE"],
+		"VOTE_NAMES" => $arParams["VOTE_NAMES"],
 
 		"USE_SHARE" => $arParams["LIST_USE_SHARE"],
 		"SHARE_HIDE" => $arParams["SHARE_HIDE"],

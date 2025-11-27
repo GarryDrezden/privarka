@@ -56,6 +56,7 @@ $code_backcall = $APPLICATION->CaptchaGetCode();
 		text-decoration: none;
 		font-weight: 600;
 		font-size: 12px;
+		word-break: break-word;
 	}
 	/*Таблицы типоразмеров*/
 	.metrix_tables{
@@ -188,7 +189,7 @@ console.log(<?=json_encode($debugData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_U
 console.groupEnd();
 </script>
 
-<?if($rawRequestUri == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
+				<?if($url_request == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
 					<style>
 						.other_all_form{
 							display: flex;
