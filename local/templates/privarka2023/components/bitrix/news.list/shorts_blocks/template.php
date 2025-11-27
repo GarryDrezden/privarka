@@ -118,42 +118,49 @@ $code_backcall = $APPLICATION->CaptchaGetCode();
                        <div class="card_sections_block">
 <?php
 $rawRequestUri = $_SERVER['REQUEST_URI'] ?? '';
-$decodedRequestUri = rawurldecode($rawRequestUri);
+$requestPath = (string)parse_url($rawRequestUri, PHP_URL_PATH);
+$decodedRequestPath = rawurldecode($requestPath);
+$normalizedRequestPath = rtrim($decodedRequestPath, '/') ?: '/';
 $url_request = $rawRequestUri;
+
+foreach ($arResult['ITEMS'] as $arItem):
+        $catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
+        $catalog_page = '';
+
+        if (empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])) {
+                $sectionId = (int)$arItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
+
+                if ($sectionId > 0 && isset($sectionPages[$sectionId])) {
+                        $catalog_page = $sectionPages[$sectionId];
+                }
+        } else {
+            $catalog_page = $arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'];
+        }
+
+        if (!$catalog_page) {
+                continue;
+        }
+
+        $catalogPath = (string)parse_url($catalog_page, PHP_URL_PATH);
+        $decodedCatalogPath = rawurldecode($catalogPath);
+        $normalizedCatalogPath = rtrim($decodedCatalogPath, '/') ?: '/';
+
+        if ($normalizedCatalogPath === $normalizedRequestPath) {
 ?>
-<?foreach($arResult["ITEMS"] as $arItem):
-$catalog_link = $arItem['PROPERTIES']['LINK']['VALUE'];
-$catalog_page = '';
-$comparison_request = $rawRequestUri;
-if(empty($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE'])){
-$sectionId = (int)$arItem['PROPERTIES']['CATALOG_PAGE']['VALUE'];
-if($sectionId > 0 && isset($sectionPages[$sectionId])){
-$catalog_page = $sectionPages[$sectionId];
-}
-}else{
-$catalog_page = rawurldecode($arItem['PROPERTIES']['ANCHOR_PAGE']['VALUE']);
-$comparison_request = $decodedRequestUri;
-}
-if(!$catalog_page){
-continue;
-}
-                                                //echo $catalog_page.'<br>';
-                                                //echo $url_request.'<br>';
-                                                //echo $_SERVER['REQUEST_URI'];
-                                                if($catalog_page == $comparison_request){
-                                ?>
                                 <div class="card_section" data-id="<?=$arItem['ID']?>">
-					<img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?>" class="card_section_img" alt="...">
-					<div class="card_section_body">
-						<p class="card_section_title">
-							<a href="<?=$catalog_link?>">
-								<?echo $arItem["NAME"]?>
-							</a>
-						</p>
-					</div>
-				</div>
-				<?}else{}?>
-				<? endforeach;?>
+                                        <img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?>" class="card_section_img" alt="...">
+                                        <div class="card_section_body">
+                                                <p class="card_section_title">
+                                                        <a href="<?=$catalog_link?>">
+                                                                <?echo $arItem["NAME"]?>
+                                                        </a>
+                                                </p>
+                                        </div>
+                                </div>
+<?
+        }
+endforeach;
+?>
 
 <?if($rawRequestUri == "/krepezh/privarnoy_krepyezh/krepezh_dlya_dugovoy_svarki_arc/filter/mount_type-is-гибкий упор/work_materials-is-955bf239d420ce5d5d8c8d7a0343903f/apply/"){ ?>
 					<style>
