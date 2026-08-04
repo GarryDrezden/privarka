@@ -417,25 +417,26 @@
 	overflow: hidden;
 	margin-bottom: 15px;
 	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.bx-touch .product-item-title,
-.product-item-container.hover .product-item-title {
-	overflow: auto;
-	white-space: normal;
+	white-space: inherit;
 }
 
 .product-item-title a {
-	color: #fff;
+	color: #222;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: inherit;
+	font-family: inherit;
+	background: none;
+	border: none;
 }
-.product-item-title a:hover {
-	color: #fff;
+
+.product-item-title a:hover,
+.product-item-title a:active,
+.product-item-title a:focus,
+.product-item-title a:focus-visible {
+	color: #F0AB00;
 	text-decoration: none;
-	background: #a87f17;
-    border-color: #a87f17;
+	background: none;
+	border: none;
 }
 .product-title{
 	color: #000!important;

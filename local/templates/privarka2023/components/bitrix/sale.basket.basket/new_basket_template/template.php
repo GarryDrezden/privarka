@@ -136,6 +136,32 @@ Main\UI\Extension::load(['ui.mustache']);
 
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
 $this->addExternalCss($templateFolder.'/themes/'.$arParams['TEMPLATE_THEME'].'/style.css');
+?>
+<style>
+.basket-min-order-alert-section {
+	margin-top: 15px;
+}
+.basket-min-order-alert {
+	padding: 12px 15px;
+	background-color: #fff3cd;
+	border: 1px solid #ffc107;
+	border-radius: 4px;
+	color: #856404;
+	font-size: 14px;
+}
+.basket-min-order-text {
+	display: block;
+}
+.basket-min-order-text [data-entity="min-order-delta"] {
+	font-weight: bold;
+}
+.basket-btn-checkout.disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+</style>
+<?
 
 $this->addExternalJs($templateFolder.'/js/action-pool.js');
 $this->addExternalJs($templateFolder.'/js/filter.js');
@@ -289,6 +315,119 @@ if (empty($arResult['ERROR_MESSAGE']))
 	?>
 	<script>
 		BX.message(<?=CUtil::PhpToJSObject($messages)?>);
+		
+		// Минимальная сумма заказа
+		var MIN_ORDER_AMOUNT = 1000;
+		
+		// Сохраняем оригинальный метод fillTotalBlocks
+		var originalFillTotalBlocks = BX.Sale.BasketComponent.fillTotalBlocks;
+		
+		// Переопределяем метод fillTotalBlocks для добавления проверки минимальной суммы
+		BX.Sale.BasketComponent.fillTotalBlocks = function() {
+			// Вызываем оригинальный метод
+			originalFillTotalBlocks.call(this);
+			
+			// Проверяем минимальную сумму заказа после небольшой задержки для обновления DOM
+			var self = this;
+			setTimeout(function() {
+				self.checkMinOrderAmount();
+			}, 10);
+		};
+		
+		// Добавляем метод для проверки минимальной суммы заказа
+		BX.Sale.BasketComponent.checkMinOrderAmount = function() {
+			var totalData = this.result.TOTAL_RENDER_DATA;
+			if (!totalData || typeof totalData.PRICE === 'undefined') {
+				return;
+			}
+			
+			var currentPrice = parseFloat(totalData.PRICE);
+			if (isNaN(currentPrice)) {
+				return;
+			}
+			
+			var minOrderMet = currentPrice >= MIN_ORDER_AMOUNT;
+			var delta = Math.max(0, MIN_ORDER_AMOUNT - currentPrice);
+			
+			// Находим все блоки с итоговой суммой
+			var totalNodes = this.getEntities(this.getCacheNode(this.ids.basketRoot), 'basket-total-block');
+			
+			if (totalNodes && totalNodes.length) {
+				for (var i = 0; i < totalNodes.length; i++) {
+					var node = totalNodes[i];
+					if (!BX.type.isDomNode(node)) {
+						continue;
+					}
+					
+					// Находим кнопку оформления заказа
+					var checkoutButton = this.getEntity(node, 'basket-checkout-button');
+					if (checkoutButton) {
+						if (!minOrderMet) {
+							BX.addClass(checkoutButton, 'disabled');
+							checkoutButton.disabled = true;
+						} else {
+							BX.removeClass(checkoutButton, 'disabled');
+							if (!totalData.DISABLE_CHECKOUT) {
+								checkoutButton.disabled = false;
+							} else {
+								checkoutButton.disabled = true;
+							}
+						}
+					}
+					
+					// Находим или создаем блок с уведомлением
+					var alertSection = node.querySelector('.basket-min-order-alert-section');
+					if (!minOrderMet) {
+						if (!alertSection) {
+							// Создаем блок уведомления
+							alertSection = BX.create('div', {
+								props: { className: 'basket-min-order-alert-section' },
+								children: [
+									BX.create('div', {
+										props: { className: 'basket-min-order-alert' },
+										children: [
+											BX.create('span', {
+												props: { className: 'basket-min-order-text' },
+												html: 'Минимальная сумма заказа 10000 рублей. Необходимо заказать еще на <span data-entity="min-order-delta"></span>'
+											})
+										]
+									})
+								]
+							});
+							
+							// Вставляем перед basket-checkout-container
+							var checkoutContainer = node.querySelector('.basket-checkout-container');
+							if (checkoutContainer && checkoutContainer.parentNode) {
+								checkoutContainer.parentNode.insertBefore(alertSection, checkoutContainer);
+							} else {
+								node.insertBefore(alertSection, node.firstChild);
+							}
+						}
+						
+						// Обновляем дельту
+						var deltaElement = alertSection.querySelector('[data-entity="min-order-delta"]');
+						if (deltaElement) {
+							var formattedDelta = '';
+							if (BX.Currency && typeof BX.Currency.currencyFormat === 'function') {
+								var currency = totalData.CURRENCY || 'RUB';
+								formattedDelta = BX.Currency.currencyFormat(delta, currency, true);
+							} else {
+								// Fallback форматирование
+								formattedDelta = delta.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, '&nbsp;') + '&nbsp;₽';
+							}
+							deltaElement.innerHTML = formattedDelta;
+						}
+						
+						alertSection.style.display = '';
+					} else {
+						if (alertSection) {
+							alertSection.style.display = 'none';
+						}
+					}
+				}
+			}
+		};
+		
 		BX.Sale.BasketComponent.init({
 			result: <?=CUtil::PhpToJSObject($arResult, false, false, true)?>,
 			params: <?=CUtil::PhpToJSObject($arParams)?>,

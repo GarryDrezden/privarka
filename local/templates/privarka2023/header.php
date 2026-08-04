@@ -16,8 +16,8 @@ use  \Bitrix\Main\Page\Asset;
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
-        <link rel='stylesheet' href='/local/templates/privarka2023/styles.css'>
-        <link href="/local/templates/privarka2023/css/main-style.css" rel="stylesheet">
+        <link rel='stylesheet' href='/local/templates/privarka2023/styles.css?v=20260624-2'>
+        <link href="/local/templates/privarka2023/css/main-style.css?v=20260624-2" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript" defer></script>
         <script src="//code.jivo.ru/widget/mBVraQjrue" async></script>
         <?
@@ -84,6 +84,11 @@ use  \Bitrix\Main\Page\Asset;
                                             <a class="menu-item" href="/oborudovanie/">
                                             <img loading="lazy" src="/local/templates/privarka2023/images/menu_equip.png" title="Оборудование" alt="Оборудование"/>
                                             Оборудование</a>
+                                        </li>
+                                        <li>
+                                            <a class="menu-item" href="/ventilyatsiya/">
+                                            <img loading="lazy" src="/upload/iblock/f72/tbz3atpmql73jvq81y1fupf5qnf84itf.png" title="Вентиляция" alt="Вентиляция"/>
+                                            Вентиляция</a>
                                         </li>
                                     </div>
                                 </div>
@@ -233,9 +238,13 @@ use  \Bitrix\Main\Page\Asset;
                     <div class="head_contacts_and_call_back">
                         <div class="head_contacts">
                             <a href="tel:+<?=$region_phone_link;?>" class="head_phone"><?=$region_phone;?></a>
+                                <a href="mailto:<?=$region_email;?>" class="head_phone"><?=$region_email;?></a>
                         </div>
-                        <div class="head_call_back" id="BackCallBtn">
-                            <div>Заказать звонок</div>
+                        <div class="head_call_back_wrap">
+                            <a href="https://old.privarka-k97.ru/" target="_blank" rel="nofollow" class="head_old_site_link">Перейти на старый сайт</a>
+                            <div class="head_call_back" id="BackCallBtn">
+                                <div>Заказать звонок</div>
+                            </div>
                         </div>
                     </div>
                     <div class="head_region" id="ModalRegionBtn">
@@ -258,9 +267,6 @@ use  \Bitrix\Main\Page\Asset;
                         </div>
                     </div>
                 </div>
-                <div style="padding: 10px 0 0 0;font-size: 15px;text-align: center;">
-                        <a href="https://old.privarka-k97.ru/" target="_blank" style="font-size:16px;color:#000;font-family: Montserrat;">Перейти на старый сайт</a>
-                </div>
                 <div class="menu">
                     <div class="head_menu">
                         <div class="menu_item arrow_mark dropdown">
@@ -275,6 +281,7 @@ use  \Bitrix\Main\Page\Asset;
                                     <ul class="dropdown-menu">
                                         <li><a href="/krepezh/zapressovochnyy_krepyezh/">Запрессовочный крепёж</a></li>
                                         <li><a href="/krepezh/privarnoy_krepyezh/">Приварной крепёж</a></li>
+                                        <li><a href="/krepezh/gvozdi-dlya-krepleniya-izolyatsii/">Крепеж для изоляции</a></li>
                                         <li><a href="/krepezh/nerzhaveyushchiy-krepezh/">Нержавеющий крепёж</a></li>
                                         <li><a href="/krepezh/zakladnye-gayki/">Закладные гайки</a></li>
                                         <li><a href="/krepezh/zaklepki/">Заклепки</a></li>
@@ -287,6 +294,14 @@ use  \Bitrix\Main\Page\Asset;
                                     <ul class="dropdown-menu">
                                         <li><a href="/oborudovanie/oborudovanie_dlya_privarki_krepezha/">Оборудование для приварки крепежа</a></li>
                                         <li><a href="/oborudovanie/oborudovanie-dlya-zapressovki-krepezha/">Оборудование для запрессовки крепежа</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item" href="/ventilyatsiya/">
+                                    <img loading="lazy" src="/local/templates/privarka2023/images/menu_vent.png" title="Вентиляция" alt="Вентиляция"/>
+                                    Вентиляция</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/ventilyatsiya/vozdukhoraspredeliteli-dlya-ventilyatsii/">Воздухораспределители для вентиляции</a></li>
                                     </ul>
                                 </li>
                             </ul>

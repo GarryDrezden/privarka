@@ -218,7 +218,7 @@ use \Bitrix\Main\Localization\Loc;
                             ?>
                         </p>
                             <? }else{ ?>
-                                <p>Под заказ</p>
+                                <p>Цена по запросу</p>
                             <? } ?>
                 </div>
                 <!-- <div class="second_price_cart">
@@ -281,7 +281,7 @@ use \Bitrix\Main\Localization\Loc;
 						<div class="BackCallBtnCatalog">
 							<a class="btn_main btn-sm <?//=$buttonSizeClass?>"
 								id="<?=$itemIds['NOT_AVAILABLE_MESS']?>" href="javascript:void(0)" rel="nofollow">
-								Под заказ<?//=$arParams['MESS_NOT_AVAILABLE']?>
+								Заказать<?//=$arParams['MESS_NOT_AVAILABLE']?>
 							</a>
 						</div>
 					</div>

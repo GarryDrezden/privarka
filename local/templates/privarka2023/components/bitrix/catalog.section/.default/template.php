@@ -189,6 +189,18 @@ if (!isset($arParams['HIDE_SECTION_DESCRIPTION']) || $arParams['HIDE_SECTION_DES
 	<?
 }
 ?>
+<?
+$rowVariants = (string)($arParams['PRODUCT_ROW_VARIANTS'] ?? '');
+$hideShortsBlocks = ($arParams['HIDE_SHORTS_BLOCKS'] ?? 'N') === 'Y'
+	|| !empty($arParams['RCM_TYPE'])
+	|| (stripos($rowVariants, 'BIG_DATA') !== false && stripos($rowVariants, 'true') !== false)
+	|| (
+		($arParams['HIDE_SECTION_DESCRIPTION'] ?? 'N') === 'Y'
+		&& ($arParams['SHOW_FROM_SECTION'] ?? 'N') === 'Y'
+	);
+
+if (!$hideShortsBlocks):
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
 	"shorts_blocks", 
@@ -282,6 +294,7 @@ if (!isset($arParams['HIDE_SECTION_DESCRIPTION']) || $arParams['HIDE_SECTION_DES
 	),
 	false
 );?>
+<?endif;?>
 <div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
 	<?
 	if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS']))

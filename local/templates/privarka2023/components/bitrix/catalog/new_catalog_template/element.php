@@ -14,6 +14,7 @@
 
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
+use Bitrix\Iblock\Component\Tools;
 
 $this->setFrameMode(true);
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
@@ -220,6 +221,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 		{
 			$componentElementParams['USER_CONSENT_IS_LOADED'] = $arParams['USER_CONSENT_IS_LOADED'];
 		}
+		$componentElementParams['PROPERTY_CODE'][] = 'VIDEO';
 
 		$elementId = $APPLICATION->IncludeComponent(
 			'bitrix:catalog.element',
@@ -228,6 +230,17 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 			$component
 		);
 		$GLOBALS['CATALOG_CURRENT_ELEMENT_ID'] = $elementId;
+
+		if ((int)$elementId <= 0)
+		{
+			Tools::process404(
+				$arParams['~MESSAGE_404'] ?? '',
+				true,
+				($arParams['SET_STATUS_404'] ?? '') === 'Y',
+				($arParams['SHOW_404'] ?? '') === 'Y',
+				$arParams['FILE_404'] ?? ''
+			);
+		}
 
 		if ($elementId > 0)
 		{

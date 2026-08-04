@@ -1,0 +1,17 @@
+/* Совместимость с типовым flat (голосование, базовые акценты — тема блога задаётся в privarka_blog/style.css) */
+.bx-newsdetail .fa.bx-star-active {
+	color: #F0AB00;
+}
+
+.bx-newsdetail .btn {
+	background-color: #F0AB00;
+	border-color: #F0AB00;
+	color: #000;
+}
+
+.bx-newsdetail .btn:active,
+.bx-newsdetail .btn:hover {
+	background-color: #ffc233;
+	border-color: #ffc233;
+	color: #000;
+}

@@ -601,6 +601,12 @@ $arTemplateParameters['SHOW_FROM_SECTION'] = array(
 	'TYPE' => 'CHECKBOX',
 	'DEFAULT' => 'N'
 );
+$arTemplateParameters['HIDE_SHORTS_BLOCKS'] = array(
+	'PARENT' => 'BIG_DATA_SETTINGS',
+	'NAME' => 'Скрыть блок shorts_blocks',
+	'TYPE' => 'CHECKBOX',
+	'DEFAULT' => 'N'
+);
 $arTemplateParameters['USE_ENHANCED_ECOMMERCE'] = array(
 	'PARENT' => 'ANALYTICS_SETTINGS',
 	'NAME' => GetMessage('CP_BCS_TPL_USE_ENHANCED_ECOMMERCE'),

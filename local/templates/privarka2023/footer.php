@@ -80,7 +80,7 @@
                                     <a href="mailto:<?=$region_email;?>" class="yellow_link"><?=$region_email;?></a>
                                 </p>
                             </div>
-                            <h3>Компания</h3>
+                            <div class="footer_menu_title">Компания</div>
                             <div class="footer_menu_item">
                                 <p>
                                     <a href="/company/about/">О компании</a>
@@ -101,7 +101,7 @@
                                     <a class="b-0" href="/company/feedback/">Отзывы</a>
                                 </p>
                             </div>
-                            <h3>Продукция</h3>
+                            <div class="footer_menu_title">Продукция</div>
                             <div class="footer_menu_item">
                                 <p>
                                     <a href="/krepezh/">Крепёж</a>
@@ -110,7 +110,7 @@
                                     <a class="b-0" href="/oborudovanie/">Оборудование</a>
                                 </p>
                             </div>
-                            <h3>Полезная информация</h3>
+                            <div class="footer_menu_title">Полезная информация</div>
                             <div class="footer_menu_item">
                                 <p style="font-size: 11px;width:411px;">Все права защищены и охраняются законом. Перепечатка материалов и использование фотографий допускается только с письменного разрешения владельцев сайта и при наличии активной ссылки на сайт  privarka-k97.ru. Информация на сайте, носит ознакомительный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ. © Группа компаний «Контур», 2005 - 2023</p>
                                 <div style="padding-top: 10px">
@@ -173,7 +173,7 @@
             <div class="modal-content backcall-card">
                 <div class="backcall-header">
                     <div class="backcall-header-text">
-                        <h5 class="modal-title" id="backCallModalLabel">Введите Ваши данные</h5>
+                        <div class="modal-title" id="backCallModalLabel">Введите Ваши данные</div>
                         <p class="backcall-subtitle">Наш менеджер свяжется с Вами в ближайшее время</p>
                     </div>
                     <button type="button" id="CloseBackCall" class="backcall-close" data-bs-dismiss="modal" aria-label="Закрыть">
@@ -212,7 +212,7 @@
         <div id="ModalBackCallCatalog" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="backCallModalLabel">Введите Ваши данные</h5>
+                    <div class="modal-title text-center" id="backCallModalLabel">Введите Ваши данные</div>
                     <button type="button" id="CloseBackCallCatalog" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <p>Наш менеджер свяжется с Вами в ближайшее время
@@ -541,7 +541,7 @@
         <div id="ModalRegion" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="regionModalLabel">Выберете ваш город</h5>
+                    <div class="modal-title text-center" id="regionModalLabel">Выберете ваш город</div>
                     <button type="button" class="btn-close region_close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
@@ -587,7 +587,7 @@
         <div id="ModalRegionMob" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="regionModalLabel">Выберете ваш город</h5>
+                    <div class="modal-title text-center" id="regionModalLabel">Выберете ваш город</div>
                     <button type="button" class="btn-close region_mob_close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">

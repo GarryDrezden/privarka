@@ -87,8 +87,23 @@ body {
     box-sizing: border-box;
 }
 
-a {
+a,
+a:hover,
+a:focus,
+a:active,
+a:focus-visible,
+a:visited {
     text-decoration: none;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus:not(:focus-visible),
+a:active {
+    outline: none;
+    box-shadow: none;
 }
 
 h2,
@@ -268,8 +283,16 @@ div.bx-blue .btn.btn-default:hover {
 
 .head .head_contacts {
     display: flex;
-    align-items: center;
-    /* padding-left: 15%; */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    text-align: left;
+}
+
+.head .head_contacts::before {
+    content: none !important;
+    display: none !important;
 }
 
 .head .head_contacts p {
@@ -279,15 +302,29 @@ div.bx-blue .btn.btn-default:hover {
 .head .head_contacts .head_phone {
     color: #000;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    display: inline-flex;
+    align-items: center;
+    width: 205px;
 }
 
-.head .head_contacts::before {
-    content: url(/local/templates/privarka2023/images/head_phone_icon.svg);
-    padding-right: 10px;
+.head .head_contacts .head_phone::before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("/local/templates/privarka2023/images/head_phone_icon.svg");
+}
+
+.head .head_contacts .head_phone[href^="mailto:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2225%22%20height%3D%2225%22%20viewBox%3D%220%200%2025%2025%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2012.5C0%205.59644%205.59644%200%2012.5%200C19.4036%200%2025%205.59644%2025%2012.5C25%2019.4036%2019.4036%2025%2012.5%2025C5.59644%2025%200%2019.4036%200%2012.5Z%22%20fill%3D%22%23FFB400%22/%3E%3Cpath%20d%3D%22M6.8%209.1H18.2C18.7523%209.1%2019.2%209.54772%2019.2%2010.1V16.9C19.2%2017.4523%2018.7523%2017.9%2018.2%2017.9H6.8C6.24772%2017.9%205.8%2017.4523%205.8%2016.9V10.1C5.8%209.54772%206.24772%209.1%206.8%209.1Z%22%20stroke%3D%22white%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M6.2%2010.2L12.5%2014.2L18.8%2010.2%22%20stroke%3D%22white%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E");
 }
 
 .head .head_call_back {
@@ -295,6 +332,24 @@ div.bx-blue .btn.btn-default:hover {
     display: flex;
     align-items: center;
     /* padding-left: 3%; */
+}
+
+.head .head_call_back_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.head .head_old_site_link {
+    font-size: 16px;
+    color: #000;
+    font-family: Montserrat;
+    line-height: 150%;
+}
+
+.head .head_old_site_link:hover {
+    text-decoration: underline;
 }
 
 .back_call {
@@ -339,8 +394,20 @@ div.bx-blue .btn.btn-default:hover {
 
 .head_contacts_and_call_back {
     display: flex;
-    width: 343px;
+    width: 460px;
     justify-content: space-between;
+}
+
+.head_old_site {
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    text-align: center;
+}
+
+.head_old_site a {
+    font-size: 16px;
+    color: #000;
+    font-family: Montserrat;
 }
 
 .head_user_and_basket {
@@ -605,7 +672,7 @@ select:focus {
     gap: 16px;
 }
 
-#ModalBackCall .backcall-header-text h5 {
+#ModalBackCall .backcall-header-text .modal-title {
     font-size: 22px;
     font-weight: 600;
     margin: 0 0 8px;
@@ -1404,26 +1471,77 @@ select:focus {
 
 .product-item-title {
     color: #222;
-    text-align: center;
-    font-family: Futura PT;
-    font-size: 15px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
     font-style: normal;
     font-weight: 450;
     line-height: 22px;
+    text-decoration: none;
     overflow: hidden;
     white-space: inherit;
     margin: 0 auto;
     display: block;
-    padding: 0 10px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 0px 0 40px;
     height: 110px;
     background-color: #fff;
     z-index: 99;
     position: relative;
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.product-item-title:hover {
-    text-decoration: none;
+.product-item-title:visited {
     color: #222;
+}
+
+.product-item-title:hover,
+.product-item-title:active,
+.product-item-title:focus,
+.product-item-title:focus-visible {
+    color: #F0AB00;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.product-item-title a {
+    color: #222;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.product-item-title a:visited {
+    color: #222;
+}
+
+.product-item-title a:hover,
+.product-item-title a:active,
+.product-item-title a:focus,
+.product-item-title a:focus-visible {
+    color: #F0AB00;
+    text-decoration: none;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.product-item-container.hover .product-item-title,
+.bx-touch .product-item-title,
+.main_top_product .product-item-container.hover .product-item-title {
+    overflow: hidden;
+    white-space: inherit;
 }
 
 .product-item-big-card .product-item span {
@@ -1439,9 +1557,6 @@ select:focus {
     text-align: left;
 }
 
-.product-item-title:hover {
-    overflow: visible;
-}
 /* .bx-touch .product-item-title,
 .product-item-container.hover .product-item-title {
     overflow: visible;
@@ -2796,4 +2911,39 @@ button {
 
 .table_block_artnumber td {
     font-size: 15px;
+}
+
+/* Кнопка "Читать статью" в блоге */
+.bx-newslist-title a:hover{
+    color: #F0AB00;
+}
+.bx-newslist-more .blog_btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+    color: #F0AB00;
+    text-decoration: none;
+}
+
+.blog_btn:hover,
+.blog_btn:active {
+    color: #F0AB00;
+    text-decoration: none;
+}
+
+.blog_btn-arrow-wrap {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 10px;
+    height: 24px;
+}
+
+.blog_btn-arrow {
+    width: 100px;
+    height: auto;
+    flex-shrink: 0;
+    display: block;
 }

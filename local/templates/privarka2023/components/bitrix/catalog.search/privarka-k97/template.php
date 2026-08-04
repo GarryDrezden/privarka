@@ -17,7 +17,6 @@ use Bitrix\Main\Loader;
 $this->setFrameMode(true);
 
 global $searchFilter;
-$searchFilter = [];
 
 $elementOrder = [];
 if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'N')
@@ -64,26 +63,26 @@ if (Loader::includeModule('search'))
 			'HIDE_ICONS' => 'Y',
 		]
 	);
-        if (is_array($arElements) && !empty($arElements))
-        {
-                $searchFilter = [
-                        "ID" => $arElements,
-                ];
-                if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
-                {
-                        $elementOrder = [
-                                "ELEMENT_SORT_FIELD" => "ID",
-                                "ELEMENT_SORT_ORDER" => $arElements,
-                        ];
-                }
-        }
-        else
-        {
-                \CHTTP::SetStatus('404 Not Found');
-                @define('ERROR_404', 'Y');
-                require $_SERVER['DOCUMENT_ROOT'] . '/404.php';
-                return;
-        }
+	if (!empty($arElements) && is_array($arElements))
+	{
+		$searchFilter = [
+			"ID" => $arElements,
+		];
+		if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
+		{
+			$elementOrder = [
+				"ELEMENT_SORT_FIELD" => "ID",
+				"ELEMENT_SORT_ORDER" => $arElements,
+			];
+		}
+	}
+       else
+       {
+               if (is_array($arElements))
+               {
+                       LocalRedirect('/404.php');
+               }
+       }
 }
 else
 {

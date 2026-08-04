@@ -1,0 +1,880 @@
+.privarka-blog {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.privarka-blog__layout {
+	width: 100%;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 260px;
+	gap: 24px 32px;
+	align-items: start;
+}
+
+/* Отступ под липкую шапку (ПК) */
+body.privarka-blog-page {
+	--privarka-blog-sticky-top: 165px;
+	--privarka-blog-gutter: 16px;
+	scroll-padding-top: var(--privarka-blog-sticky-top);
+}
+
+/* ПК: main — display:contents, hero на всю ширину, TOC справа от текста */
+@media (min-width: 992px) {
+	.privarka-blog__main {
+		display: contents;
+	}
+
+	.privarka-blog__main > .privarka-blog__article-hero {
+		grid-column: 1 / -1;
+		grid-row: 1;
+		width: 100%;
+		max-width: 100%;
+		margin-right: 0;
+	}
+
+	.privarka-blog__main > .privarka-blog__aside,
+	.privarka-blog__layout > .privarka-blog__aside {
+		grid-column: 2;
+		grid-row: 2;
+		align-self: start;
+		position: sticky;
+		top: var(--privarka-blog-sticky-top, 165px);
+		bottom: auto;
+		left: auto;
+		right: auto;
+		order: unset;
+		width: auto;
+		max-width: none;
+		z-index: 50;
+	}
+
+	.privarka-blog__main > :not(.privarka-blog__article-hero):not(.privarka-blog__aside) {
+		grid-column: 1;
+	}
+
+	.privarka-blog__toc-card {
+		max-height: none;
+		overflow-y: visible;
+	}
+}
+
+@media (max-width: 991px) {
+	body.privarka-blog-page {
+		--privarka-blog-sticky-top: 112px;
+	}
+
+	body.privarka-blog-page .content_wrapper.news_page {
+		padding-left: var(--privarka-blog-gutter);
+		padding-right: var(--privarka-blog-gutter);
+	}
+
+	.privarka-blog,
+	.privarka-blog__layout,
+	.privarka-blog__main,
+	.privarka-blog__article-hero,
+	.privarka-blog__expert,
+	.privarka-blog__body {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		margin-left: 0;
+		margin-right: 0;
+		box-sizing: border-box;
+	}
+
+	.privarka-blog {
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.privarka-blog > .privarka-blog__article-hero {
+		order: 1;
+	}
+
+	.privarka-blog > .privarka-blog__layout {
+		order: 2;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Flex + order: TOC после hero, до «Мнения эксперта» (в т.ч. если aside — сосед main) */
+	.privarka-blog__layout {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.privarka-blog__main {
+		display: contents;
+	}
+
+	.privarka-blog__article-hero,
+	.privarka-blog__main > .privarka-blog__article-hero {
+		order: 1;
+	}
+
+	.privarka-blog__aside,
+	.privarka-blog__layout > .privarka-blog__aside,
+	.privarka-blog__main > .privarka-blog__aside {
+		order: 2;
+	}
+
+	.privarka-blog__expert,
+	.privarka-blog__main > .privarka-blog__expert {
+		order: 3;
+	}
+
+	.privarka-blog__staging-append,
+	.privarka-blog__body,
+	.privarka-blog__sources,
+	.privarka-blog__author-footer,
+	.privarka-blog__faq,
+	.privarka-blog__rating-block,
+	.privarka-blog__more,
+	.privarka-blog__share {
+		order: 4;
+	}
+
+	.privarka-blog__main > .privarka-blog__article-hero,
+	.privarka-blog__main > .privarka-blog__aside,
+	.privarka-blog__layout > .privarka-blog__aside {
+		width: 100%;
+		max-width: 100%;
+		margin-right: 0;
+	}
+
+	.privarka-blog__article-hero {
+		margin-bottom: 20px;
+	}
+
+	.privarka-blog__article-hero .article-hero__inner {
+		padding: 16px;
+		border-radius: 16px;
+	}
+
+	.privarka-blog__expert {
+		padding: 16px;
+		border-radius: 8px;
+		margin-bottom: 20px;
+	}
+
+	.privarka-blog__main > .privarka-blog__aside {
+		position: static;
+		top: auto;
+		left: auto;
+		right: auto;
+		bottom: auto;
+		margin: 0 0 20px;
+		z-index: auto;
+		align-self: stretch;
+	}
+
+	.privarka-blog .row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.privarka-blog .row > [class*="col-"] {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.privarka-blog__body {
+		font-size: 17px;
+		line-height: 1.65;
+	}
+
+	.privarka-blog__body h2 {
+		font-size: 22px;
+	}
+}
+
+body.privarka-blog-page .header {
+	position: sticky;
+	top: 0;
+	z-index: 200;
+	background: #fff;
+}
+
+.privarka-blog__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 12px;
+}
+
+.privarka-blog__meta-item {
+	white-space: nowrap;
+}
+
+/* Hero в .privarka-blog__main; на ПК растягивается на всю сетку (см. media min-width 992px) */
+.privarka-blog__article-hero {
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 28px;
+}
+
+.privarka-blog__article-hero .article-hero__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 573px) minmax(0, 1fr);
+	gap: 40px;
+	align-items: start;
+	padding: 24px;
+	border-radius: 24px;
+	background: rgba(191, 170, 249, 0.2);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.privarka-blog__article-hero .article-hero__inner--solo {
+	grid-template-columns: 1fr;
+}
+
+.privarka-blog__article-hero .article-hero__image {
+	border-radius: 16px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.privarka-blog__article-hero .article-hero__image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.privarka-blog__article-hero .article-hero__image .privarka-blog__media {
+	margin-bottom: 0;
+}
+
+.privarka-blog__article-hero .article-hero__image .privarka-blog__pic {
+	border-radius: 0;
+}
+
+.privarka-blog__article-hero .article-hero__content {
+	position: relative;
+}
+
+.privarka-blog__article-hero .article-hero__rating-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #222;
+}
+
+.privarka-blog__article-hero .article-hero__rating-badge svg {
+	color: #F0AB00;
+	flex-shrink: 0;
+}
+
+.privarka-blog__article-hero .article-hero__dates {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 24px;
+	margin-top: 36px;
+	margin-bottom: 16px;
+}
+
+.privarka-blog__article-hero .article-hero__inner--solo .article-hero__dates {
+	margin-top: 0;
+}
+
+.privarka-blog__article-hero .article-hero__date-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 15px;
+	color: #666;
+}
+
+.privarka-blog__article-hero .article-hero__date-item svg {
+	flex-shrink: 0;
+	color: #888;
+}
+
+.privarka-blog__article-hero .article-hero__title,
+.privarka-blog__article-hero h1.article-hero__title {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: #222;
+	margin: 0 0 24px;
+}
+
+.privarka-blog__article-hero .article-hero__stats {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.privarka-blog__article-hero .article-hero__stat {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 15px;
+	color: #666;
+}
+
+.privarka-blog__article-hero .article-hero__stat svg {
+	flex-shrink: 0;
+	color: #888;
+}
+
+.privarka-blog__article-hero .article-hero__content:has(.article-hero__rating-badge) .article-hero__title {
+	padding-right: 4.5rem;
+}
+
+.privarka-blog__article-hero .article-hero__content:has(.article-hero__rating-badge):not(:has(.article-hero__dates)) .article-hero__title {
+	padding-top: 0.5rem;
+}
+
+@media (max-width: 991px) {
+	.privarka-blog__article-hero .article-hero__inner {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	.privarka-blog__article-hero .article-hero__rating-badge {
+		position: static;
+		margin-bottom: 12px;
+	}
+
+	.privarka-blog__article-hero .article-hero__dates {
+		margin-top: 0;
+	}
+
+	.privarka-blog__article-hero .article-hero__title,
+	.privarka-blog__article-hero h1.article-hero__title {
+		font-size: 24px;
+		padding-right: 0;
+	}
+}
+
+@media (max-width: 576px) {
+	.privarka-blog__article-hero .article-hero__inner {
+		gap: 24px;
+	}
+
+	.privarka-blog__article-hero .article-hero__title,
+	.privarka-blog__article-hero h1.article-hero__title {
+		font-size: 20px;
+	}
+
+	.privarka-blog__article-hero .article-hero__dates {
+		gap: 12px;
+	}
+}
+
+.privarka-blog__title {
+	font-size: 28px;
+	line-height: 1.25;
+	margin: 0 0 20px;
+	font-weight: 700;
+}
+
+.privarka-blog__media {
+	margin-bottom: 24px;
+}
+
+.privarka-blog__media iframe {
+	border: 0;
+	width: 100%;
+}
+
+.privarka-blog__pic {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.privarka-blog__expert {
+	background: #faf8f3;
+	border-left: 4px solid #F0AB00;
+	padding: 20px 20px 16px;
+	margin-bottom: 28px;
+	border-radius: 0 6px 6px 0;
+}
+
+.privarka-blog__expert-label {
+	font-weight: 700;
+	margin: 0 0 10px;
+	font-size: 18px;
+}
+
+.privarka-blog__expert-quote {
+	font-size: 16px;
+	line-height: 1.55;
+	margin-bottom: 16px;
+}
+
+.privarka-blog__author-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	margin-top: 8px;
+}
+
+.privarka-blog__author-card--footer {
+	margin-top: 0;
+}
+
+.privarka-blog__author-photo img {
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+}
+
+.privarka-blog__author-name {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.privarka-blog__author-job {
+	color: #666;
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+.privarka-blog__cta {
+	margin-top: 10px;
+}
+
+.privarka-blog__staging-append {
+	margin-bottom: 24px;
+}
+
+.privarka-blog__body {
+	font-size: 16px;
+	line-height: 1.65;
+	color: #222;
+	max-width: 100%;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+.privarka-blog__body img,
+.privarka-blog__body picture,
+.privarka-blog__body video,
+.privarka-blog__body iframe {
+	max-width: 100% !important;
+	height: auto;
+}
+
+.privarka-blog__body table {
+	max-width: 100% !important;
+	display: block;
+	overflow-x: auto;
+}
+
+.privarka-blog__body h2 {
+	font-size: 22px;
+	margin: 32px 0 14px;
+	font-weight: 700;
+	scroll-margin-top: calc(var(--privarka-blog-sticky-top, 165px) + 12px);
+}
+
+.privarka-blog__body h3 {
+	font-size: 18px;
+	margin: 24px 0 10px;
+	font-weight: 600;
+}
+
+.privarka-blog__body table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 16px 0;
+	font-size: 14px;
+}
+
+.privarka-blog__body table th,
+.privarka-blog__body table td {
+	border: 1px solid #ddd;
+	padding: 8px 10px;
+}
+
+.privarka-blog__body ul,
+.privarka-blog__body ol {
+	padding-left: 1.25em;
+	margin: 12px 0;
+}
+
+.privarka-blog__h2 {
+	font-size: 22px;
+	margin: 36px 0 16px;
+	font-weight: 700;
+}
+
+.privarka-blog__h3 {
+	font-size: 18px;
+	margin: 24px 0 12px;
+	font-weight: 600;
+}
+
+.privarka-blog__sources-body {
+	font-size: 15px;
+	line-height: 1.55;
+}
+
+.privarka-blog__related,
+.privarka-blog__more {
+	margin-top: 36px;
+}
+
+.privarka-blog__verified {
+	display: inline-block;
+	background: #e8f5e9;
+	color: #2e7d32;
+	padding: 4px 10px;
+	border-radius: 4px;
+	font-size: 13px;
+	margin-bottom: 12px;
+}
+
+.privarka-blog__faq-item {
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+	padding: 0 12px;
+	margin-bottom: 10px;
+	background: #fff;
+}
+
+.privarka-blog__faq-item summary {
+	list-style: none;
+	cursor: pointer;
+}
+
+.privarka-blog__faq-item summary::-webkit-details-marker {
+	display: none;
+}
+
+.privarka-blog__faq-q {
+	cursor: pointer;
+	font-weight: 600;
+	padding: 12px 0;
+	margin: 0;
+	display: inline;
+	font-size: 14px;
+	line-height: 30px;
+}
+
+.privarka-blog__faq-a {
+	padding: 0 0 14px;
+	font-size: 15px;
+	line-height: 1.55;
+	border-top: 1px solid #eee;
+	margin-top: 0;
+	padding-top: 12px;
+}
+
+.privarka-blog__rating-block {
+	margin-top: 32px;
+	padding-top: 24px;
+	border-top: 1px solid #eee;
+}
+
+.privarka-blog__rating-note {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.privarka-blog__share {
+	margin-top: 20px;
+}
+
+.privarka-blog__aside {
+	position: sticky;
+	top: var(--privarka-blog-sticky-top, 165px);
+	align-self: start;
+	z-index: 50;
+	scroll-margin-top: var(--privarka-blog-sticky-top, 165px);
+}
+
+.privarka-blog__toc-card {
+	background: #f7f7f7;
+	border: 1px solid #e5e5e5;
+	border-radius: 8px;
+	padding: 14px 16px;
+	max-height: none;
+	overflow-y: visible;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.privarka-blog__toc-title {
+	font-weight: 700;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.privarka-blog__toc-root {
+	margin: 0;
+	padding-left: 18px;
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.privarka-blog__toc-root a {
+	color: #333;
+	text-decoration: none;
+}
+
+.privarka-blog__toc-root a:hover {
+	text-decoration: underline;
+	color: #F0AB00;
+}
+
+.privarka-blog-promo {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	border: 1px solid #eee;
+	border-radius: 8px;
+	padding: 16px;
+	margin: 24px 0;
+	background: #fafafa;
+	align-items: flex-start;
+}
+
+.privarka-blog-promo__img {
+	flex: 0 0 120px;
+	max-width: 40%;
+}
+
+.privarka-blog-promo__img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.privarka-blog-promo__body {
+	flex: 1 1 200px;
+}
+
+.privarka-blog-promo__title {
+	font-weight: 700;
+	font-size: 17px;
+	margin-bottom: 8px;
+}
+
+.privarka-blog-promo__text {
+	font-size: 14px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+}
+
+.privarka-blog-promo__link {
+	color: #c68600;
+	font-weight: 600;
+}
+
+.privarka-blog-staging-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+.privarka-blog-staging-btn {
+	border: 1px solid #ddd;
+	background: #fff;
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 13px;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s;
+}
+
+.privarka-blog-staging-btn.is-active {
+	border-color: #F0AB00;
+	background: #fff9e6;
+}
+
+[data-staging-buttons] [data-staging-tab].is-active {
+	border-color: #F0AB00;
+	background: #fff9e6;
+}
+
+[data-staging-buttons] [data-staging-tab] {
+	border: 1px solid #ddd;
+	background: #fff;
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 13px;
+	cursor: pointer;
+	margin: 0 8px 8px 0;
+}
+
+.privarka-blog-staging-inner [data-staging-panel] {
+	padding-top: 8px;
+}
+
+/* Рейтинг */
+.privarka-blog-rating__stars {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 8px;
+}
+
+.privarka-blog-rating__star {
+	border: 0;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+	color: #ccc;
+	line-height: 0;
+	transition: color 0.15s, transform 0.1s;
+}
+
+.privarka-blog-rating__star:hover,
+.privarka-blog-rating__star.is-hover {
+	color: #F0AB00;
+	transform: scale(1.05);
+}
+
+.privarka-blog-rating__star.is-selected {
+	color: #F0AB00;
+}
+
+.privarka-blog-rating.is-voted .privarka-blog-rating__stars {
+	pointer-events: none;
+}
+
+.privarka-blog-rating.is-voted .privarka-blog-rating__star {
+	cursor: default;
+	pointer-events: none;
+	color: #ddd;
+	transform: none;
+}
+
+.privarka-blog-rating.is-voted .privarka-blog-rating__star.is-selected {
+	color: #F0AB00;
+	opacity: 1;
+}
+
+.privarka-blog-rating.is-voted .privarka-blog-rating__star:disabled {
+	opacity: 1;
+}
+
+.privarka-blog-rating__summary {
+	font-size: 15px;
+	margin: 0 0 14px;
+	color: #333;
+}
+
+.privarka-blog__rating-block .privarka-blog-rating__summary-val {
+	font-weight: 700;
+}
+
+.privarka-blog-rating__msg {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+	min-height: 1.2em;
+}
+
+.privarka-blog-rating__msg:not(:empty) {
+	color: #c0392b;
+}
+
+/* Баннер контактов */
+.privarka-blog-contact-banner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px 24px;
+	margin: 28px 0;
+	padding: 24px 28px;
+	border-radius: 16px;
+	background: #1a1a1a;
+	color: #fff;
+}
+
+.privarka-blog-contact-banner__html {
+	flex: 1 1 280px;
+	font-size: 15px;
+	line-height: 1.55;
+}
+
+.privarka-blog-contact-banner__html p {
+	margin: 0 0 8px;
+}
+
+.privarka-blog-contact-banner__html p:last-child {
+	margin-bottom: 0;
+}
+
+.privarka-blog-contact-banner__html a {
+	color: #F0AB00;
+	text-decoration: underline;
+}
+
+.privarka-blog-contact-banner__html a:hover {
+	text-decoration: none;
+}
+
+.privarka-blog-contact-banner__btn {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 20px 12px 22px;
+	border-radius: 999px;
+	background: #F0AB00;
+	color: #1a1a1a;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 15px;
+	transition: background 0.15s, transform 0.1s;
+}
+
+.privarka-blog-contact-banner__btn:hover {
+	background: #e09d00;
+	color: #1a1a1a;
+	text-decoration: none;
+	transform: translateY(-1px);
+}
+
+.privarka-blog-contact-banner__btn-icon {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: #1a1a1a;
+	position: relative;
+	flex-shrink: 0;
+}
+
+.privarka-blog-contact-banner__btn-icon::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid #F0AB00;
+	border-right: 2px solid #F0AB00;
+	transform: translate(-60%, -50%) rotate(45deg);
+}
+
+@media (max-width: 576px) {
+	.privarka-blog-contact-banner {
+		padding: 18px 16px;
+	}
+	.privarka-blog-contact-banner__btn {
+		width: 100%;
+		justify-content: center;
+	}
+}

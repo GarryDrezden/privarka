@@ -13,6 +13,10 @@ ErrorDocument 404 /404.php
 <IfModule mod_rewrite.c>
 	Options +FollowSymLinks
 	RewriteEngine On
+
+	# 301: гвозди для крепления изоляции (перенос из privarnoy_krepyezh в krepezh)
+	RewriteRule ^krepezh/privarnoy_krepyezh/gvozdi-dlya-krepleniya-izolyatsii/?(.*)$ /krepezh/gvozdi-dlya-krepleniya-izolyatsii/$1 [R=301,L]
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_FILENAME} !-d

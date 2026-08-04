@@ -1,0 +1,25 @@
+<?php
+$MESS['PRIVARKA_BLOG_META_RATING'] = 'Оценка';
+$MESS['PRIVARKA_BLOG_META_VIEWS'] = 'Просмотры';
+$MESS['PRIVARKA_BLOG_META_READ'] = 'Чтение';
+$MESS['PRIVARKA_BLOG_META_PUBLISHED'] = 'Опубликовано';
+$MESS['PRIVARKA_BLOG_META_UPDATED'] = 'Обновлено';
+$MESS['PRIVARKA_BLOG_EXPERT'] = 'Мнение эксперта';
+$MESS['PRIVARKA_BLOG_TOC'] = 'Содержание';
+$MESS['PRIVARKA_BLOG_SOURCES'] = 'Использованные источники';
+$MESS['PRIVARKA_BLOG_RELATED'] = 'Связанные статьи';
+$MESS['PRIVARKA_BLOG_MORE'] = 'Другие статьи';
+$MESS['PRIVARKA_BLOG_AUTHOR'] = 'Автор материала';
+$MESS['PRIVARKA_BLOG_VERIFIED'] = 'Материал проверен';
+$MESS['PRIVARKA_BLOG_FAQ'] = 'Часто задаваемые вопросы';
+$MESS['PRIVARKA_BLOG_RATE'] = 'Оцените статью';
+$MESS['PRIVARKA_BLOG_PROMO_MORE'] = 'Подробнее';
+$MESS['PRIVARKA_BLOG_CRUMB_HOME'] = 'Главная';
+$MESS['PRIVARKA_BLOG_CRUMB_BLOG'] = 'Блог';
+$MESS['PRIVARKA_BLOG_HERO'] = 'Шапка статьи';
+$MESS['PRIVARKA_BLOG_RATING_THANKS'] = 'Спасибо за оценку!';
+$MESS['PRIVARKA_BLOG_RATING_ALREADY'] = 'Вы уже оценили эту статью.';
+$MESS['PRIVARKA_BLOG_RATING_ERROR'] = 'Не удалось сохранить оценку. Попробуйте позже.';
+$MESS['PRIVARKA_BLOG_RATING_HL'] = 'Голосование не настроено на сервере. Обратитесь к администратору (нужен HL-блок).';
+$MESS['PRIVARKA_BLOG_RATING_SESSID'] = 'Сессия истекла. Обновите страницу и попробуйте снова.';
+$MESS['PRIVARKA_BLOG_RATING_VOTES'] = 'оценок';

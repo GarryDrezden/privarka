@@ -121,11 +121,12 @@ function searchPage(input, page, $window = false) {
         }
     }
 }
-$(document).ready(function() {
-    $(document).mouseup(function(event) {
-        var id = '.js-smartSearch';
-        if (!$(id).is(event.target) && $(id).has(event.target).length === 0) {
-            $(id).find('.js-smartSearch-result.open').removeClass('open');
-        }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('mouseup', function(event) {
+    var block = document.querySelector('.js-smartSearch');
+    if (!block.contains(event.target)) {
+      var opened = block.querySelector('.js-smartSearch-result.open');
+      if (opened) opened.classList.remove('open');
+    }
+  });
 });

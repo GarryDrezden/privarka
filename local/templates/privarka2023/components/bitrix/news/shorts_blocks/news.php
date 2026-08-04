@@ -53,6 +53,57 @@ $this->setFrameMode(true);
 ?>
 <?endif?>
 
+<?php
+// ОТЛАДКА: Сохранение параметров компонента для отладки
+global $USER;
+$debug_params = [
+	'IBLOCK_TYPE' => $arParams["IBLOCK_TYPE"],
+	'IBLOCK_ID' => $arParams["IBLOCK_ID"],
+	'NEWS_COUNT' => $arParams["NEWS_COUNT"],
+	'CHECK_DATES' => $arParams["CHECK_DATES"],
+	'INCLUDE_SUBSECTIONS' => 'Y',
+	'CACHE_TYPE' => 'N (disabled)',
+	'CACHE_TIME' => 0,
+	'CURRENT_URL' => $_SERVER['REQUEST_URI'],
+	'IS_ADMIN' => $USER->IsAdmin(),
+	'USER_ID' => $USER->GetID(),
+	'USER_GROUPS' => $USER->GetUserGroupArray(),
+	'COMPONENT_CALLED' => true,
+	'COMPONENT_TIMESTAMP' => time()
+];
+?>
+<script>
+(function(){
+	try {
+		// Сохраняем параметры компонента в глобальную переменную
+		if(typeof window.newsComponentDebug === 'undefined'){
+			window.newsComponentDebug = {};
+		}
+
+		window.newsComponentDebug.params = <?= json_encode($debug_params, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>;
+
+		// Функция для вывода параметров компонента в консоль
+		window.newsComponentDebug.show = function(){
+			if(!window.newsComponentDebug || !window.newsComponentDebug.params){
+				console.error('Параметры компонента не найдены. Компонент может быть не загружен на этой странице.');
+				return;
+			}
+			
+			console.group('%c⚙️ DEBUG: news component parameters', 'font-size: 16px; font-weight: bold; color: #0066cc;');
+			console.table(window.newsComponentDebug.params);
+			console.log('User Groups:', window.newsComponentDebug.params.USER_GROUPS);
+			console.groupEnd();
+		};
+	} catch(e) {
+		console.error('Ошибка при инициализации отладки news component:', e);
+	}
+})();
+</script>
+<?php
+// ОТЛАДКА: Проверка перед вызовом компонента
+$component_call_start = microtime(true);
+?>
+
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"shorts_blocks",
@@ -77,8 +128,8 @@ $this->setFrameMode(true);
 
 		"CACHE_TYPE" => "N",
         "CACHE_TIME" => 0,
+		"CACHE_GROUPS" => "N", // Отключаем кэширование по группам пользователей
 		// "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-		// "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
 
 		"PREVIEW_TRUNCATE_LEN" => $arParams["PREVIEW_TRUNCATE_LEN"],
 		"ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
@@ -134,3 +185,26 @@ $this->setFrameMode(true);
 	),
 	$component
 );?>
+
+<?php
+// ОТЛАДКА: Проверка после вызова компонента
+$component_call_end = microtime(true);
+$component_call_time = round(($component_call_end - $component_call_start) * 1000, 2);
+
+$debug_params['component_executed'] = true;
+$debug_params['component_execution_time_ms'] = $component_call_time;
+?>
+<script>
+(function(){
+	try {
+		if(typeof window.newsComponentDebug !== 'undefined' && window.newsComponentDebug.params){
+			window.newsComponentDebug.params.component_executed = true;
+			window.newsComponentDebug.params.component_execution_time_ms = <?= $component_call_time ?>;
+		}
+	} catch(e) {
+		// Тихая обработка ошибок
+	}
+})();
+</script>
+<?php
+?>

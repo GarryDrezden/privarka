@@ -12,8 +12,32 @@
 /** @var CBitrixComponent $component */
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
+use Bitrix\Iblock\Component\Tools;
 
 $this->setFrameMode(true);
+
+// SEF-fallback Bitrix: URL несуществующего товара может быть разобран как section
+// с SECTION_CODE_PATH, но без SECTION_ID — catalog.section тогда показывает корень каталога.
+$sectionCodePath = (string)($arResult['VARIABLES']['SECTION_CODE_PATH'] ?? '');
+$sectionId = (int)($arResult['VARIABLES']['SECTION_ID'] ?? 0);
+$elementCode = (string)($arResult['VARIABLES']['ELEMENT_CODE'] ?? '');
+$elementId = (int)($arResult['VARIABLES']['ELEMENT_ID'] ?? 0);
+
+if ($sectionCodePath !== '' && $sectionId <= 0 && $elementCode === '' && $elementId <= 0 && Loader::includeModule('iblock'))
+{
+	$resolvedSectionId = \CIBlockFindTools::GetSectionIDByCodePath((int)$arParams['IBLOCK_ID'], $sectionCodePath);
+	if ($resolvedSectionId <= 0)
+	{
+		Tools::process404(
+			$arParams['~MESSAGE_404'] ?? '',
+			true,
+			($arParams['SET_STATUS_404'] ?? '') === 'Y',
+			($arParams['SHOW_404'] ?? '') === 'Y',
+			$arParams['FILE_404'] ?? ''
+		);
+	}
+	$arResult['VARIABLES']['SECTION_ID'] = $resolvedSectionId;
+}
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 
 if (!isset($arParams['FILTER_VIEW_MODE']) || (string)$arParams['FILTER_VIEW_MODE'] == '')
@@ -30,6 +54,7 @@ if ($isFilter)
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"ACTIVE" => "Y",
 		"GLOBAL_ACTIVE" => "Y",
+		"CHECK_PERMISSIONS" => "N",
 	);
 	if (0 < intval($arResult["VARIABLES"]["SECTION_ID"]))
 		$arFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];

@@ -73,7 +73,7 @@ if (0 < $arResult['SECTIONS_COUNT'])
 		{
 			$arMap[$arSection['ID']] = $key;
 		}
-		$rsSections = CIBlockSection::GetList(array(), array('ID' => array_keys($arMap)), false, $arSelect);
+		$rsSections = CIBlockSection::GetList(array(), array('ID' => array_keys($arMap), 'CHECK_PERMISSIONS' => 'N'), false, $arSelect);
 		while ($arSection = $rsSections->GetNext())
 		{
 			if (!isset($arMap[$arSection['ID']]))
