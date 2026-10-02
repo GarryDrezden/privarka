@@ -1,39 +1,38 @@
-# Скопировать SC deliverables локально без Context sync.
-# Запуск: PowerShell, из папки privarka после git pull.
+# Copy SC deliverables to P:\ or Desktop (ASCII-only for Windows PowerShell).
+# Run from privarka repo after git pull:
 #   powershell -NoProfile -ExecutionPolicy Bypass -File .\upload\sc-section-deliverables\save-sc-deliverables-local.ps1
 
 $ErrorActionPreference = "Stop"
-$repoRoot = (git rev-parse --show-toplevel 2>$null)
+
+$repoRoot = git rev-parse --show-toplevel 2>$null
 if (-not $repoRoot) {
-    Write-Host "Запустите из клонированного репозитория privarka (git pull сначала)."
+    Write-Host "ERROR: run inside privarka git repo (cd ...\privarka)."
     exit 1
 }
 Set-Location $repoRoot
-git pull --ff-only 2>$null | Out-Host
 
 $src = Join-Path $repoRoot "upload\sc-section-deliverables"
 if (-not (Test-Path $src)) {
-    Write-Host "Нет папки $src — сделайте git pull (коммит Add SC section deliverables)."
+    Write-Host "ERROR: missing folder: $src"
+    Write-Host "Run: git pull"
     exit 1
 }
 
-# Куда копировать: P: если есть subst, иначе корень сайта
-$destCandidates = @(
-    "P:\upload\sc-section-deliverables",
-    "E:\Работа\OSPanel\domains\privarka\upload\sc-section-deliverables",
-    (Join-Path $env:USERPROFILE "Desktop\privarka-sc-deliverables")
-)
+Write-Host "Source (already after pull): $src"
+Get-ChildItem $src -File | ForEach-Object { Write-Host "  $($_.Name)" }
+
 $dest = $null
-foreach ($d in $destCandidates) {
-    $parent = Split-Path $d -Parent
-    if ($d -like "P:\*" -and (Test-Path "P:\")) { $dest = $d; break }
-    if ($d -like "E:\*" -and (Test-Path $parent)) { $dest = $d; break }
+if (Test-Path "P:\") {
+    $dest = "P:\upload\sc-section-deliverables"
+} else {
+    $dest = Join-Path $env:USERPROFILE "Desktop\privarka-sc-deliverables"
 }
-if (-not $dest) { $dest = $destCandidates[-1] }
 
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item -Path (Join-Path $src "*") -Destination $dest -Force
-Write-Host "Готово. Файлы:"
-Get-ChildItem $dest | ForEach-Object { Write-Host "  $($_.FullName)" }
+
 Write-Host ""
-Write-Host "Откройте sc-duplicate-removal.xlsx и sc-missing-import.xlsx"
+Write-Host "Copied to: $dest"
+Get-ChildItem $dest -File | ForEach-Object { Write-Host "  $($_.FullName)" }
+Write-Host ""
+Write-Host "Open: sc-duplicate-removal.xlsx, sc-missing-import.xlsx"
